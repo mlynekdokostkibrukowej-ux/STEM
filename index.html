@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEM - Sklep z grami</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Motiva Sans", Arial, Helvetica, sans-serif;
+        }
+        body {
+            background: radial-gradient(circle at top, #1b2838 0%, #171a21 100%);
+            color: #c7d5e0;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #171a21;
+            padding: 20px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 3px;
+        }
+        .logo span {
+            color: #66c0f4;
+        }
+        nav a {
+            color: #b8b6b4;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        nav a.active, nav a:hover {
+            color: #66c0f4;
+        }
+        .cart-badge {
+            background-color: #5c7e10;
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 2px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        main {
+            max-width: 980px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .search-bar {
+            background-color: #316282;
+            padding: 8px 12px;
+            border-radius: 3px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .search-bar input {
+            width: 100%;
+            background: #22384a;
+            border: 1px solid #000;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 3px;
+            outline: none;
+        }
+        h2 {
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        .featured {
+            display: flex;
+            background-color: #0f1922;
+            margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .featured img {
+            width: 62%;
+            object-fit: cover;
+        }
+        .featured-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 38%;
+        }
+        .featured-info h3 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .tag {
+            display: inline-block;
+            background: rgba(103, 193, 245, 0.2);
+            color: #67c1f5;
+            padding: 3px 8px;
+            font-size: 12px;
+            border-radius: 2px;
+            margin-right: 5px;
+            margin-top: 10px;
+        }
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .game-card {
+            background-color: #16202d;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .game-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+        }
+        .game-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+        .card-body {
+            padding: 15px;
+        }
+        .card-body h4 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        .discount-box {
+            display: flex;
+            align-items: center;
+            background: #0000004d;
+        }
+        .discount {
+            background-color: #4c6b22;
+            color: #beee11;
+            padding: 5px 8px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .price {
+            padding: 5px 10px;
+            color: #acdbf5;
+            font-size: 14px;
+        }
+        button.buy-btn {
+            background: linear-gradient(to right, #75b022 5%, #588a1b 95%);
+            border: none;
+            color: #d2efa9;
+            padding: 7px 14px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button.buy-btn:hover {
+            color: #ffffff;
+            background: linear-gradient(to right, #8ed629 5%, #6aa621 95%);
+        }
+        @media (max-width: 768px) {
+            .featured { flex-direction: column; }
+            .featured img, .featured-info { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <div class="logo">STEM<span>STORE</span></div>
+            <nav>
+                <a href="#" class="active">SKLEP</a>
+                <a href="#">SPOŁECZNOŚĆ</a>
+                <a href="#">INFORMACJE</a>
+                <a href="#">POMOC</a>
+            </nav>
+        </div>
+        <div class="cart-badge">Koszyk (<span id="cart-count">0</span>)</div>
+    </header>
+
+    <main>
+        <div class="search-bar">
+            <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="Szukaj w sklepie...">
+        </div>
+
+        <h2>Wyróżnione i polecane</h2>
+        <div class="featured">
+            <img src="https://placehold.co" alt="Wyróżniona gra">
+            <div class="featured-info">
+                <div>
+                    <h3>Cyber Odyssey 2077</h3>
+                    <p style="font-size: 14px; line-height: 1.5; color: #8f98a0;">Przemierzaj futurystyczną metropolię i podejmuj decyzje, które zmienią losy całego miasta.</p>
+                    <div>
+                        <span class="tag">Otwarty świat</span>
+                        <span class="tag">RPG</span>
+                        <span class="tag">Sci-Fi</span>
+                    </div>
+                </div>
+                <div class="price-row">
+                    <span class="price" style="padding-left:0; font-size:16px;">199,99 zł</span>
+                    <button class="buy-btn" onclick="addToCart()">Dodaj do koszyka</button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Oferty specjalne</h2>
+        <div class="games-grid" id="gamesGrid">
+            <div class="game-card" data-title="wiedzmin dziki kod rpg">
+                <img src="https://placehold.co" alt="Gra 1">
+                <div class="card-body">
+                    <h4>Wiedźmin: Dziki Kod</h4>
+                    <div class="price-row">
+                        <div class="discount-box">
+                            <span class="discount">-70%</span>
+                            <span class="price">29,99 zł</span>
+                        </div>
+                        <button class="buy-btn" onclick="addToCart()">+ Koszyk</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" data-title="kosmiczni odkrywcy strategia">
+                <img src="https://placehold.co" alt="Gra 2">
+                <div class="card-body">
+                    <h4>Kosmiczni Odkrywcy</h4>
+                    <div class="price-row">
+                        <div class="discount-box">
+                            <span class="discount">-50%</span>
+                            <span class="price">54,99 zł</span>
+                        </div>
+                        <button class="buy-btn" onclick="addToCart()">+ Koszyk</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" data-title="mroczne lochy akcja">
+                <img src="https://placehold.co" alt="Gra 3">
+                <div class="card-body">
+                    <h4>Mroczne Lochy</h4>
+                    <div class="price-row">
+                        <div class="discount-box">
+                            <span class="discount">-25%</span>
+                            <span class="price">79,99 zł</span>
+                        </div>
+                        <button class="buy-btn" onclick="addToCart()">+ Koszyk</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let count = 0;
+        function addToCart() {
+            count++;
+            document.getElementById('cart-count').innerText = count;
+        }
+
+        function filterGames() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('game-card');
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getAttribute('data-title');
+                cards[i].style.display = title.includes(input) ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>
