@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEM - Sklep z grami</title>
+    <title>STEM - Sklep</title>
     <style>
         * {
             box-sizing: border-box;
@@ -89,36 +89,11 @@
         .featured {
             display: flex;
             background-color: #0f1922;
+            min-height: 250px;
             margin-bottom: 40px;
             box-shadow: 0 0 20px rgba(0,0,0,0.6);
             border-radius: 2px;
             overflow: hidden;
-        }
-        .featured img {
-            width: 62%;
-            object-fit: cover;
-        }
-        .featured-info {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 38%;
-        }
-        .featured-info h3 {
-            font-size: 24px;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-        .tag {
-            display: inline-block;
-            background: rgba(103, 193, 245, 0.2);
-            color: #67c1f5;
-            padding: 3px 8px;
-            font-size: 12px;
-            border-radius: 2px;
-            margin-right: 5px;
-            margin-top: 10px;
         }
         .games-grid {
             display: grid;
@@ -186,7 +161,6 @@
         }
         @media (max-width: 768px) {
             .featured { flex-direction: column; }
-            .featured img, .featured-info { width: 100%; }
         }
     </style>
 </head>
@@ -211,67 +185,12 @@
 
         <h2>Wyróżnione i polecane</h2>
         <div class="featured">
-            <img src="https://placehold.co" alt="Wyróżniona gra">
-            <div class="featured-info">
-                <div>
-                    <h3>Cyber Odyssey 2077</h3>
-                    <p style="font-size: 14px; line-height: 1.5; color: #8f98a0;">Przemierzaj futurystyczną metropolię i podejmuj decyzje, które zmienią losy całego miasta.</p>
-                    <div>
-                        <span class="tag">Otwarty świat</span>
-                        <span class="tag">RPG</span>
-                        <span class="tag">Sci-Fi</span>
-                    </div>
-                </div>
-                <div class="price-row">
-                    <span class="price" style="padding-left:0; font-size:16px;">199,99 zł</span>
-                    <button class="buy-btn" onclick="addToCart()">Dodaj do koszyka</button>
-                </div>
-            </div>
+            <!-- Miejsce na Twoją wyróżnioną pozycję -->
         </div>
 
         <h2>Oferty specjalne</h2>
         <div class="games-grid" id="gamesGrid">
-            <div class="game-card" data-title="wiedzmin dziki kod rpg">
-                <img src="https://placehold.co" alt="Gra 1">
-                <div class="card-body">
-                    <h4>Wiedźmin: Dziki Kod</h4>
-                    <div class="price-row">
-                        <div class="discount-box">
-                            <span class="discount">-70%</span>
-                            <span class="price">29,99 zł</span>
-                        </div>
-                        <button class="buy-btn" onclick="addToCart()">+ Koszyk</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="game-card" data-title="kosmiczni odkrywcy strategia">
-                <img src="https://placehold.co" alt="Gra 2">
-                <div class="card-body">
-                    <h4>Kosmiczni Odkrywcy</h4>
-                    <div class="price-row">
-                        <div class="discount-box">
-                            <span class="discount">-50%</span>
-                            <span class="price">54,99 zł</span>
-                        </div>
-                        <button class="buy-btn" onclick="addToCart()">+ Koszyk</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="game-card" data-title="mroczne lochy akcja">
-                <img src="https://placehold.co" alt="Gra 3">
-                <div class="card-body">
-                    <h4>Mroczne Lochy</h4>
-                    <div class="price-row">
-                        <div class="discount-box">
-                            <span class="discount">-25%</span>
-                            <span class="price">79,99 zł</span>
-                        </div>
-                        <button class="buy-btn" onclick="addToCart()">+ Koszyk</button>
-                    </div>
-                </div>
-            </div>
+            <!-- Miejsce na Twoje karty z grami / produktami -->
         </div>
     </main>
 
