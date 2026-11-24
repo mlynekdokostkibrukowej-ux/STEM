@@ -5,48 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STEM - GX Edition</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Arial, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", Arial, sans-serif; }
         body { background: radial-gradient(circle at top center, #1b1024 0%, #09090d 75%); color: #e4e4eb; min-height: 100vh; }
         header { background-color: #0d0d12; padding: 15px 4%; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #fa1e4e; box-shadow: 0 4px 20px rgba(250, 30, 78, 0.25); }
         .nav-left { display: flex; align-items: center; gap: 45px; }
         .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-        .logo img { height: 45px; width: auto; display: block; filter: drop-shadow(0 0 6px rgba(250, 30, 78, 0.4)); }
-        .logo-text { color: #ffffff; font-size: 26px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; }
-        nav { display: flex; align-items: center; }
-        nav a { color: #9e9eb3; text-decoration: none; margin-right: 22px; font-weight: 800; font-size: 14px; letter-spacing: 1px; padding: 8px 4px; transition: 0.2s; }
-        nav a.active, nav a:hover { color: #fa1e4e; text-shadow: 0 0 10px rgba(250, 30, 78, 0.7); }
-        a.install-steam-btn { background-color: #fa1e4e; color: #ffffff; text-decoration: none; padding: 9px 18px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
-        a.install-steam-btn:hover { background-color: #ff3360; box-shadow: 0 0 15px rgba(250, 30, 78, 0.85); }
+        .logo img { height: 45px; width: auto; display: block; }
+        .logo-text { color: #fff; font-size: 26px; font-weight: 900; letter-spacing: 3px; }
+        nav a { color: #9e9eb3; text-decoration: none; margin-right: 22px; font-weight: 800; font-size: 14px; letter-spacing: 1px; }
+        nav a.active, nav a:hover { color: #fa1e4e; }
+        a.install-btn { background: #fa1e4e; color: #fff; text-decoration: none; padding: 9px 18px; font-size: 13px; font-weight: 800; text-transform: uppercase; }
         main { max-width: 1100px; margin: 35px auto; padding: 0 20px; }
-        .search-bar { background-color: #14141d; border: 1px solid #2b2b3d; border-left: 4px solid #fa1e4e; padding: 10px 14px; margin-bottom: 30px; display: flex; gap: 10px; }
-        .search-bar:focus-within { border-color: #fa1e4e; box-shadow: 0 0 15px rgba(250, 30, 78, 0.3); }
-        .search-bar input { width: 100%; background: transparent; border: none; color: #ffffff; font-size: 15px; outline: none; }
-        .clear-btn { background: transparent; color: #9e9eb3; border: 1px solid #2b2b3d; padding: 6px 14px; font-weight: bold; text-transform: uppercase; font-size: 11px; cursor: pointer; }
-        .clear-btn:hover { color: #fff; border-color: #fa1e4e; }
-        h2 { font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; color: #ffffff; text-transform: uppercase; border-left: 3px solid #fa1e4e; padding-left: 10px; }
+        .search-bar { background: #14141d; border: 1px solid #2b2b3d; border-left: 4px solid #fa1e4e; padding: 10px 14px; margin-bottom: 30px; display: flex; gap: 10px; }
+        .search-bar input { width: 100%; background: transparent; border: none; color: #fff; font-size: 15px; outline: none; }
+        .clear-btn { background: transparent; color: #9e9eb3; border: 1px solid #2b2b3d; padding: 6px 14px; font-weight: bold; font-size: 11px; cursor: pointer; }
+        h2 { font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; color: #fff; text-transform: uppercase; border-left: 3px solid #fa1e4e; padding-left: 10px; }
         .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
-        .game-card { background-color: #12121a; border: 1px solid #262636; border-top: 2px solid #262636; transition: 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .game-card { background: #12121a; border: 1px solid #262636; display: flex; flex-direction: column; justify-content: space-between; transition: 0.2s; }
         .game-card:hover { transform: translateY(-4px); border-color: #fa1e4e; box-shadow: 0 6px 20px rgba(250, 30, 78, 0.35); }
-        .game-card img { width: 100%; height: 150px; object-fit: cover; background-color: #09090d; display: block; border-bottom: 1px solid #262636; }
+        .game-card img { width: 100%; height: 150px; object-fit: cover; border-bottom: 1px solid #262636; }
         .card-body { padding: 16px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
-        .card-body h4 { color: #ffffff; margin-bottom: 6px; font-size: 17px; }
+        .card-body h4 { color: #fff; margin-bottom: 6px; font-size: 17px; }
         .genre-tag { color: #6c6c85; font-size: 12px; margin-bottom: 14px; text-transform: uppercase; }
-        .steam-warning { background-color: rgba(250, 30, 78, 0.1); border-left: 2px solid #fa1e4e; color: #ffb3c4; font-size: 11px; line-height: 1.35; padding: 6px 8px; margin-bottom: 12px; }
-        .price-action { display: flex; justify-content: space-between; align-items: center; margin-top: 5px; }
+        .steam-warning { background: rgba(250, 30, 78, 0.1); border-left: 2px solid #fa1e4e; color: #ffb3c4; font-size: 11px; padding: 6px 8px; margin-bottom: 12px; }
+        .price-action { display: flex; justify-content: space-between; align-items: center; }
         .price-tag { color: #fa1e4e; font-weight: bold; font-size: 15px; }
-        a.steam-btn { background-color: #fa1e4e; color: #ffffff; text-decoration: none; padding: 9px 16px; font-weight: bold; text-transform: uppercase; font-size: 12px; letter-spacing: 0.8px; display: inline-block; }
-        a.steam-btn:hover { background-color: #ff3360; box-shadow: 0 0 12px rgba(250, 30, 78, 0.8); }
-        .no-results { display: none; background-color: #12121a; border: 1px solid #fa1e4e; padding: 25px; text-align: center; margin-top: 20px; }
-        .no-results p { margin-bottom: 15px; font-size: 15px; }
+        a.steam-btn { background: #fa1e4e; color: #fff; text-decoration: none; padding: 9px 16px; font-weight: bold; text-transform: uppercase; font-size: 12px; }
+        .no-results { display: none; background: #12121a; border: 1px solid #fa1e4e; padding: 25px; text-align: center; margin-top: 20px; }
     </style>
 </head>
 <body>
     <header>
         <div class="nav-left">
-            <a href="index.html" class="logo">
-                <img src="STEM.png" onerror="this.onerror=null; this.src='stem.png';" alt="STEM Logo">
-                <span class="logo-text">STEM</span>
-            </a>
+            <a href="index.html" class="logo"><img src="STEM.png" alt="STEM"><span class="logo-text">STEM</span></a>
             <nav>
                 <a href="index.html" class="active">SKLEP</a>
                 <a href="spolecznosc.html">SPOŁECZNOŚĆ</a>
@@ -54,85 +45,80 @@
                 <a href="pomoc.html">POMOC</a>
             </nav>
         </div>
-        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="install-steam-btn">⬇ Pobierz Steam</a>
+        <a href="https://steampowered.com" target="_blank" class="install-btn">⬇ Pobierz Steam</a>
     </header>
 
     <main>
         <div class="search-bar">
-            <input type="text" id="searchBox" oninput="szukajGry()" placeholder="Wpisz nazwę gry (np. GTA, CS2, Cyberpunk, Wiedźmin, Rust)...">
-            <button class="clear-btn" onclick="wyczyscSzukanie()">Wyczyść</button>
+            <input type="text" id="searchBox" oninput="szukajGry()" placeholder="Wpisz nazwę gry (np. GTA, CS2, Forza, Elden Ring)...">
+            <button class="clear-btn" onclick="wyczysc()">Wyczyść</button>
         </div>
 
         <h2>Katalog gier STEM</h2>
-        <div class="games-grid" id="listaGier">
-            <div class="game-card" data-nazwa="grand theft auto v enhanced gta 5">
-                <img src="GTA.jpg" alt="GTA V">
-                <div class="card-body">
-                    <div><h4>Grand Theft Auto V Enhanced</h4><div class="genre-tag">Akcja / Otwarty świat</div></div>
-                    <div>
-                        <div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div>
-                        <div class="price-action"><span class="price-tag">129,00 zł</span><a href="steam://store/3240220" class="steam-btn">Kup na Steam</a></div>
-                    </div>
-                </div>
-            </div>
+        <div class="games-grid" id="listaGier"></div>
 
-            <div class="game-card" data-nazwa="counter strike 2 cs2 cs">
-                <img src="CS.jpg" alt="CS2">
-                <div class="card-body">
-                    <div><h4>Counter-Strike 2</h4><div class="genre-tag">FPS / Akcja</div></div>
-                    <div>
-                        <div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div>
-                        <div class="price-action"><span class="price-tag">Free to Play</span><a href="steam://store/730" class="steam-btn">Kup na Steam</a></div>
-                    </div>
-                </div>
-            </div>
+        <div id="brakWynikow" class="no-results">
+            <p style="margin-bottom:15px;">Nie znaleziono tej gry na liście powyżej.</p>
+            <a id="linkSteamSzukaj" href="https://steampowered.com" target="_blank" class="steam-btn">Szukaj bezpośrednio na Steam</a>
+        </div>
+    </main>
 
-            <div class="game-card" data-nazwa="cyberpunk 2077">
-                <img src="CYBERPUNK.jpg" alt="Cyberpunk 2077">
-                <div class="card-body">
-                    <div><h4>Cyberpunk 2077</h4><div class="genre-tag">RPG / Sci-Fi</div></div>
-                    <div>
-                        <div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div>
-                        <div class="price-action"><span class="price-tag">199,00 zł</span><a href="steam://store/1091500" class="steam-btn">Kup na Steam</a></div>
-                    </div>
-                </div>
-            </div>
+    <script>
+        var gry = [
+            { id: 3240220, nazwa: "Grand Theft Auto V Enhanced", gatunek: "Akcja / Otwarty świat", cena: "129,00 zł", img: "GTA.jpg" },
+            { id: 730, nazwa: "Counter-Strike 2", gatunek: "FPS / Akcja", cena: "Free to Play", img: "CS.jpg" },
+            { id: 1091500, nazwa: "Cyberpunk 2077", gatunek: "RPG / Sci-Fi", cena: "199,00 zł", img: "CYBERPUNK.jpg" },
+            { id: 292030, nazwa: "Wiedźmin 3: Dziki Gon", gatunek: "RPG / Fantasy", cena: "99,99 zł", img: "wiedzmin.jpg" },
+            { id: 1174180, nazwa: "Red Dead Redemption 2", gatunek: "Akcja / Przygoda", cena: "249,90 zł", img: "READ.jpg" },
+            { id: 252490, nazwa: "Rust", gatunek: "Survival / Multiplayer", cena: "184,99 zł", img: "RUST.jpg" },
+            { id: 105600, nazwa: "Terraria", gatunek: "Sandbox / Przygoda", cena: "45,99 zł", img: "" },
+            { id: 1245620, nazwa: "ELDEN RING", gatunek: "RPG / Souls-like", cena: "249,00 zł", img: "" },
+            { id: 227300, nazwa: "Euro Truck Simulator 2", gatunek: "Symulator / Jazda", cena: "79,99 zł", img: "" },
+            { id: 1086940, nazwa: "Baldur's Gate 3", gatunek: "RPG / Strategia", cena: "249,00 zł", img: "" },
+            { id: 1551360, nazwa: "Forza Horizon 5", gatunek: "Wyścigi / Otwarty świat", cena: "249,90 zł", img: "" },
+            { id: 1623730, nazwa: "Palworld", gatunek: "Survival / Otwarty świat", cena: "138,99 zł", img: "" }
+        ];
 
-            <div class="game-card" data-nazwa="wiedzmin 3 dziki gon witcher">
-                <img src="wiedzmin.jpg" alt="Wiedźmin 3">
-                <div class="card-body">
-                    <div><h4>Wiedźmin 3: Dziki Gon</h4><div class="genre-tag">RPG / Fantasy</div></div>
-                    <div>
-                        <div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div>
-                        <div class="price-action"><span class="price-tag">99,99 zł</span><a href="steam://store/292030" class="steam-btn">Kup na Steam</a></div>
-                    </div>
-                </div>
-            </div>
+        function pokazGry(lista) {
+            var kontener = document.getElementById('listaGier');
+            kontener.innerHTML = '';
+            for (var i = 0; i < lista.length; i++) {
+                var g = lista[i];
+                var obrazek = g.img ? '<img src="' + g.img + '" alt="' + g.nazwa + '">' : '';
+                kontener.innerHTML += 
+                    '<div class="game-card">' + obrazek +
+                        '<div class="card-body">' +
+                            '<div><h4>' + g.nazwa + '</h4><div class="genre-tag">' + g.gatunek + '</div></div>' +
+                            '<div>' +
+                                '<div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div>' +
+                                '<div class="price-action"><span class="price-tag">' + g.cena + '</span><a href="steam://store/' + g.id + '" class="steam-btn">Kup na Steam</a></div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+            }
+        }
 
-            <div class="game-card" data-nazwa="red dead redemption 2 rdr2">
-                <img src="READ.jpg" alt="RDR2">
-                <div class="card-body">
-                    <div><h4>Red Dead Redemption 2</h4><div class="genre-tag">Akcja / Przygoda</div></div>
-                    <div>
-                        <div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div>
-                        <div class="price-action"><span class="price-tag">249,90 zł</span><a href="steam://store/1174180" class="steam-btn">Kup na Steam</a></div>
-                    </div>
-                </div>
-            </div>
+        function szukajGry() {
+            var tekst = document.getElementById('searchBox').value.toLowerCase().trim();
+            var wynik = gry.filter(function(g) {
+                return g.nazwa.toLowerCase().indexOf(tekst) > -1 || g.gatunek.toLowerCase().indexOf(tekst) > -1;
+            });
+            pokazGry(wynik);
+            var brak = document.getElementById('brakWynikow');
+            if (wynik.length === 0 && tekst.length > 0) {
+                brak.style.display = 'block';
+                document.getElementById('linkSteamSzukaj').href = 'https://steampowered.com?term=' + encodeURIComponent(tekst);
+            } else {
+                brak.style.display = 'none';
+            }
+        }
 
-            <div class="game-card" data-nazwa="rust survival">
-                <img src="RUST.jpg" alt="Rust">
-                <div class="card-body">
-                    <div><h4>Rust</h4><div class="genre-tag">Survival / Multiplayer</div></div>
-                    <div>
-                        <div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div>
-                        <div class="price-action"><span class="price-tag">184,99 zł</span><a href="steam://store/252490" class="steam-btn">Kup na Steam</a></div>
-                    </div>
-                </div>
-            </div>
+        function wyczysc() {
+            document.getElementById('searchBox').value = '';
+            szukajGry();
+        }
 
-            <div class="game-card" data-nazwa="terraria sandbox">
-                <div class="card-body">
-                    <div><h4>Terraria</h4><div class="genre-tag">Sandbox / Przygoda</div></div>
-                    <div>
-                        <div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div>
+        pokazGry(gry);
+    </script>
+</body>
+</html>
