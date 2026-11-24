@@ -56,6 +56,7 @@
             font-weight: 800;
             font-size: 14px;
             letter-spacing: 1px;
+            cursor: pointer;
             transition: color 0.2s, text-shadow 0.2s;
         }
         nav a.active, nav a:hover {
@@ -203,6 +204,57 @@
             background-color: #ff3360;
             box-shadow: 0 0 12px rgba(250, 30, 78, 0.8);
         }
+
+        /* Sekcja Społeczność (Discord) */
+        .community-card {
+            background-color: #12121a;
+            border: 1px solid #262636;
+            border-top: 3px solid #fa1e4e;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            text-align: center;
+        }
+        .community-banner {
+            width: 100%;
+            max-height: 320px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid #262636;
+        }
+        .community-content {
+            padding: 35px 25px;
+        }
+        .community-content h3 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .community-content p {
+            color: #9e9eb3;
+            font-size: 15px;
+            max-width: 600px;
+            margin: 0 auto 25px auto;
+            line-height: 1.5;
+        }
+        a.discord-btn {
+            display: inline-block;
+            background-color: #fa1e4e;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 36px;
+            font-size: 15px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        a.discord-btn:hover {
+            background-color: #ff3360;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(250, 30, 78, 0.9);
+        }
+
         @media (max-width: 768px) {
             .featured-box { flex-direction: column; }
             .featured-box img, .featured-info { width: 100%; }
@@ -212,13 +264,13 @@
 <body>
     <header>
         <div class="nav-left">
-            <a href="#" class="logo">
+            <a href="#" onclick="switchTab('store'); return false;" class="logo">
                 <img src="STEM.png" onerror="this.onerror=null; this.src='stem.png';" alt="STEM Logo">
                 <span class="logo-text">STEM</span>
             </a>
             <nav>
-                <a href="#" class="active">SKLEP</a>
-                <a href="#">SPOŁECZNOŚĆ</a>
+                <a id="tab-store" class="active" onclick="switchTab('store')">SKLEP</a>
+                <a id="tab-community" onclick="switchTab('community')">SPOŁECZNOŚĆ</a>
                 <a href="#">INFORMACJE</a>
                 <a href="#">POMOC</a>
             </nav>
@@ -226,56 +278,29 @@
     </header>
 
     <main>
-        <div class="search-bar">
-            <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="Szukaj w sklepie...">
-        </div>
-
-        <h2>Wyróżnione na Steam</h2>
-        <div class="featured-box">
-            <img src="https://steamstatic.com" 
-                 onerror="this.onerror=null; this.src='https://placehold.co';" 
-                 alt="Grand Theft Auto V Enhanced">
-            <div class="featured-info">
-                <div>
-                    <h3>Grand Theft Auto V Enhanced</h3>
-                    <p>Ulepszona wersja bestsellerowej gry akcji w otwartym świecie Los Santos oraz GTA Online.</p>
-                </div>
-                <div class="price-action">
-                    <span class="price-tag">129,00 zł</span>
-                    <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Zobacz na Steam</a>
-                </div>
+        <div id="section-store">
+            <div class="search-bar">
+                <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="Szukaj w sklepie...">
             </div>
-        </div>
 
-        <h2>Polecane tytuły</h2>
-        <div class="games-grid" id="gamesGrid">
-            <div class="game-card" data-title="cyberpunk 2077">
+            <h2>Wyróżnione na Steam</h2>
+            <div class="featured-box">
                 <img src="https://steamstatic.com" 
                      onerror="this.onerror=null; this.src='https://placehold.co';" 
-                     alt="Cyberpunk 2077">
-                <div class="card-body">
-                    <h4>Cyberpunk 2077</h4>
-                    <p>Otwarty świat akcji i przygody osadzony w futurystycznym Night City.</p>
+                     alt="Grand Theft Auto V Enhanced">
+                <div class="featured-info">
+                    <div>
+                        <h3>Grand Theft Auto V Enhanced</h3>
+                        <p>Ulepszona wersja bestsellerowej gry akcji w otwartym świecie Los Santos oraz GTA Online.</p>
+                    </div>
                     <div class="price-action">
-                        <span class="price-tag">199,00 zł</span>
+                        <span class="price-tag">129,00 zł</span>
                         <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Zobacz na Steam</a>
                     </div>
                 </div>
             </div>
 
-            <div class="game-card" data-title="counter strike 2 cs2">
-                <img src="https://steamstatic.com" 
-                     onerror="this.onerror=null; this.src='https://placehold.co';" 
-                     alt="Counter-Strike 2">
-                <div class="card-body">
-                    <h4>Counter-Strike 2</h4>
-                    <p>Najpopularniejsza taktyczna strzelanka sieciowa od Valve.</p>
-                    <div class="price-action">
-                        <span class="price-tag">Free to Play</span>
-                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Zobacz na Steam</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="game-card" data-title="wiedzmin 3 dziki gon witcher">
-                <img src="https://steamstatic.com" 
+            <h2>Polecane tytuły</h2>
+            <div class="games-grid" id="gamesGrid">
+                <div class="game-card" data-title="cyberpunk 2077">
+                    <img src="https://steamstatic.com" 
