@@ -98,7 +98,7 @@
             border: 1px solid #2b2b3d;
             border-left: 4px solid #fa1e4e;
             padding: 8px 12px;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
             display: flex;
             gap: 10px;
             transition: border-color 0.2s, box-shadow 0.2s;
@@ -134,38 +134,69 @@
             color: #ffffff;
             border-color: #fa1e4e;
         }
-        .category-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-        .cat-btn {
-            background-color: #12121a;
-            border: 1px solid #262636;
-            color: #9e9eb3;
-            padding: 8px 16px;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .cat-btn.active, .cat-btn:hover {
-            border-color: #fa1e4e;
-            color: #ffffff;
-            background-color: rgba(250, 30, 78, 0.15);
-        }
         h2 {
             font-size: 14px;
             letter-spacing: 2px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             color: #ffffff;
             text-transform: uppercase;
             border-left: 3px solid #fa1e4e;
             padding-left: 10px;
         }
+        .section-block {
+            margin-bottom: 50px;
+        }
+        /* Wyróżnione i polecane (Duży baner jak na Steam) */
+        .featured-box {
+            display: flex;
+            background-color: #12121a;
+            border: 1px solid #262636;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .featured-box:hover {
+            border-color: #fa1e4e;
+        }
+        .featured-box img {
+            width: 62%;
+            min-height: 280px;
+            object-fit: cover;
+            background-color: #09090d;
+            border-right: 1px solid #262636;
+        }
+        .featured-info {
+            padding: 25px;
+            width: 38%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .featured-info h3 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .featured-info p.desc {
+            color: #9e9eb3;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+        .mini-tag {
+            background-color: rgba(250, 30, 78, 0.15);
+            color: #ff7a98;
+            font-size: 11px;
+            padding: 3px 8px;
+            border: 1px solid rgba(250, 30, 78, 0.3);
+        }
+        /* Siatka kart gier */
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -228,10 +259,35 @@
             gap: 8px;
             margin-top: 5px;
         }
+        /* Zniżki i ceny w stylu Steam + GX */
+        .discount-group {
+            display: flex;
+            align-items: center;
+            background-color: #09090d;
+            border: 1px solid #262636;
+        }
+        .discount-badge {
+            background-color: #fa1e4e;
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 14px;
+            padding: 6px 8px;
+        }
+        .prices-stack {
+            padding: 3px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .old-price {
+            color: #6c6c85;
+            text-decoration: line-through;
+            font-size: 10px;
+        }
         .price-tag {
             color: #fa1e4e;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 14px;
         }
         a.steam-btn {
             display: inline-block;
@@ -239,10 +295,10 @@
             background-color: #fa1e4e;
             color: #ffffff;
             text-decoration: none;
-            padding: 9px 16px;
+            padding: 9px 14px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 0.8px;
             transition: background-color 0.2s, box-shadow 0.2s;
         }
@@ -250,58 +306,25 @@
             background-color: #ff3360;
             box-shadow: 0 0 12px rgba(250, 30, 78, 0.8);
         }
-        /* Ramka wyszukiwania bezpośredniego na Steam */
-        .direct-search-box {
-            background-color: #12121a;
-            border: 1px solid #fa1e4e;
-            padding: 25px;
-            margin-top: 25px;
+        /* Kafelki kategorii jak na Steam */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+        .category-tile {
+            background: linear-gradient(135deg, #1a1025 0%, #12121a 100%);
+            border: 1px solid #262636;
+            border-bottom: 3px solid #fa1e4e;
+            padding: 25px 20px;
             text-align: center;
-            display: none;
-        }
-        .direct-search-box p {
-            color: #e4e4eb;
-            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: 900;
             font-size: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
         }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="nav-left">
-            <a href="index.html" class="logo">
-                <img src="STEM.png" onerror="this.onerror=null; this.src='stem.png';" alt="STEM Logo">
-                <span class="logo-text">STEM</span>
-            </a>
-            <nav>
-                <a href="index.html" class="active">SKLEP</a>
-                <a href="spolecznosc.html">SPOŁECZNOŚĆ</a>
-                <a href="informacje.html">INFORMACJE</a>
-                <a href="pomoc.html">POMOC</a>
-            </nav>
-        </div>
-        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="install-steam-btn">
-            ⬇ Pobierz Steam
-        </a>
-    </header>
-
-    <main>
-        <div class="search-bar">
-            <input type="text" id="searchInput" oninput="filterGames()" placeholder="Wpisz nazwę gry (np. GTA, CS2, Cyberpunk, Minecraft, Rust)...">
-            <button class="clear-btn" onclick="resetSearch()">Wyczyść</button>
-        </div>
-
-        <div class="category-tabs">
-            <button class="cat-btn active" onclick="filterCategory('all', this)">Wszystkie gry</button>
-            <button class="cat-btn" onclick="filterCategory('akcja', this)">Akcja / FPS</button>
-            <button class="cat-btn" onclick="filterCategory('rpg', this)">RPG / Otwarty świat</button>
-            <button class="cat-btn" onclick="filterCategory('free', this)">Free to Play</button>
-            <button class="cat-btn" onclick="filterCategory('symulatory', this)">Symulatory / Survival</button>
-        </div>
-
-        <h2 id="sectionTitle">Katalog gier STEM</h2>
-        <div class="games-grid" id="gamesGrid"></div>
-
-        <div id="directSearchBox" class="direct-search-box">
-            <p id="directSearchText">Nie widzisz szukanej gry na liście powyżej?</p>
-            <a id="directSteamLink" href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">
+        .category-tile:hover {
+            transform: translateY(-3px);
