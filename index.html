@@ -112,7 +112,9 @@
         }
         .featured-box img {
             width: 60%;
+            min-height: 260px;
             object-fit: cover;
+            background-color: #09090d;
             border-right: 1px solid #262636;
         }
         .featured-info {
@@ -155,6 +157,7 @@
             width: 100%;
             height: 150px;
             object-fit: cover;
+            background-color: #09090d;
             display: block;
             border-bottom: 1px solid #262636;
         }
@@ -229,7 +232,9 @@
 
         <h2>Wyróżnione na Steam</h2>
         <div class="featured-box">
-            <img src="https://steamstatic.com" alt="Grand Theft Auto V Enhanced">
+            <img src="https://steamstatic.com" 
+                 onerror="this.onerror=null; this.src='https://placehold.co';" 
+                 alt="Grand Theft Auto V Enhanced">
             <div class="featured-info">
                 <div>
                     <h3>Grand Theft Auto V Enhanced</h3>
@@ -245,7 +250,9 @@
         <h2>Polecane tytuły</h2>
         <div class="games-grid" id="gamesGrid">
             <div class="game-card" data-title="cyberpunk 2077">
-                <img src="https://steamstatic.com" alt="Cyberpunk 2077">
+                <img src="https://steamstatic.com" 
+                     onerror="this.onerror=null; this.src='https://placehold.co';" 
+                     alt="Cyberpunk 2077">
                 <div class="card-body">
                     <h4>Cyberpunk 2077</h4>
                     <p>Otwarty świat akcji i przygody osadzony w futurystycznym Night City.</p>
@@ -257,7 +264,9 @@
             </div>
 
             <div class="game-card" data-title="counter strike 2 cs2">
-                <img src="https://steamstatic.com" alt="Counter-Strike 2">
+                <img src="https://steamstatic.com" 
+                     onerror="this.onerror=null; this.src='https://placehold.co';" 
+                     alt="Counter-Strike 2">
                 <div class="card-body">
                     <h4>Counter-Strike 2</h4>
                     <p>Najpopularniejsza taktyczna strzelanka sieciowa od Valve.</p>
@@ -269,19 +278,4 @@
             </div>
 
             <div class="game-card" data-title="wiedzmin 3 dziki gon witcher">
-                <img src="https://steamstatic.com" alt="Wiedźmin 3">
-                <div class="card-body">
-                    <h4>Wiedźmin 3: Dziki Gon</h4>
-                    <p>Wciel się w Geralta z Rivii w jednej z najwyżej ocenianych gier RPG.</p>
-                    <div class="price-action">
-                        <span class="price-tag">99,99 zł</span>
-                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Zobacz na Steam</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        function filterGames() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
+                <img src="https://steamstatic.com" 
