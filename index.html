@@ -59,7 +59,7 @@
 
     <main>
         <div class="search-bar">
-            <input type="text" id="searchBox" oninput="szukajGry()" placeholder="Wpisz nazwę gry (np. GTA, CS2, Cyberpunk, Wiedźmin, Rust)...">
+            <input type="text" id="searchBox" oninput="szukajGry()" placeholder="Wpisz nazwę gry (np. GTA, CS2, Cyberpunk, Wiedźmin, Rust, Forza)...">
             <button class="clear-btn" onclick="wyczyscSzukanie()">Wyczyść</button>
         </div>
 
@@ -132,14 +132,9 @@
                 </div>
             </div>
 
-        </div>
-
-        <div id="brakWynikow" class="no-results">
-            <p>Nie znaleziono tej gry na liście powyżej.</p>
-            <a id="linkSteamSzukaj" href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Szukaj bezpośrednio na Steam</a>
-        </div>
-    </main>
-
-    <script>
-        function szukajGry() {
-            var tekst = document.getElementById('searchBox').value.toLowerCase().trim();
+            <div class="game-card" data-nazwa="terraria sandbox">
+                <img src="TERRARIA.jpg" onerror="this.onerror=null; this.src='https://placehold.co';" alt="Terraria">
+                <div class="card-body">
+                    <div><h4>Terraria</h4><div class="genre-tag">Sandbox / Przygoda</div></div>
+                    <div>
+                        <div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div>
