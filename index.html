@@ -119,19 +119,20 @@
         .search-bar input::placeholder {
             color: #6c6c85;
         }
-        .search-btn {
-            background-color: #fa1e4e;
-            color: #ffffff;
-            border: none;
-            padding: 0 22px;
+        .clear-btn {
+            background-color: transparent;
+            color: #9e9eb3;
+            border: 1px solid #2b2b3d;
+            padding: 0 16px;
             font-weight: bold;
             text-transform: uppercase;
+            font-size: 12px;
             cursor: pointer;
-            letter-spacing: 1px;
-            transition: background-color 0.2s;
+            transition: all 0.2s;
         }
-        .search-btn:hover {
-            background-color: #ff3360;
+        .clear-btn:hover {
+            color: #ffffff;
+            border-color: #fa1e4e;
         }
         .category-tabs {
             display: flex;
@@ -164,11 +165,6 @@
             text-transform: uppercase;
             border-left: 3px solid #fa1e4e;
             padding-left: 10px;
-        }
-        .status-msg {
-            color: #9e9eb3;
-            font-size: 13px;
-            margin-bottom: 18px;
         }
         .games-grid {
             display: grid;
@@ -205,9 +201,16 @@
         }
         .card-body h4 {
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
             font-size: 16px;
             line-height: 1.3;
+        }
+        .genre-tag {
+            color: #6c6c85;
+            font-size: 12px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .steam-warning {
             background-color: rgba(250, 30, 78, 0.1);
@@ -247,6 +250,20 @@
             background-color: #ff3360;
             box-shadow: 0 0 12px rgba(250, 30, 78, 0.8);
         }
+        /* Ramka wyszukiwania bezpośredniego na Steam */
+        .direct-search-box {
+            background-color: #12121a;
+            border: 1px solid #fa1e4e;
+            padding: 25px;
+            margin-top: 25px;
+            text-align: center;
+            display: none;
+        }
+        .direct-search-box p {
+            color: #e4e4eb;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
     </style>
 </head>
 <body>
@@ -270,31 +287,21 @@
 
     <main>
         <div class="search-bar">
-            <input type="text" id="searchInput" onkeypress="if(event.key === 'Enter') searchSteam()" placeholder="Wpisz nazwę dowolnej gry ze Steam (np. Rust, Terraria, Elden Ring, Forza)...">
-            <button class="search-btn" onclick="searchSteam()">Szukaj</button>
+            <input type="text" id="searchInput" oninput="filterGames()" placeholder="Wpisz nazwę gry (np. GTA, CS2, Cyberpunk, Minecraft, Rust)...">
+            <button class="clear-btn" onclick="resetSearch()">Wyczyść</button>
         </div>
 
         <div class="category-tabs">
-            <button class="cat-btn active" onclick="showPopular(this)">Najpopularniejsze (Szybki start)</button>
-            <button class="cat-btn" onclick="loadCategory('top_sellers', this)">Bestsellery na żywo</button>
-            <button class="cat-btn" onclick="loadCategory('specials', this)">Promocje Steam</button>
-            <button class="cat-btn" onclick="loadCategory('new_releases', this)">Nowości</button>
+            <button class="cat-btn active" onclick="filterCategory('all', this)">Wszystkie gry</button>
+            <button class="cat-btn" onclick="filterCategory('akcja', this)">Akcja / FPS</button>
+            <button class="cat-btn" onclick="filterCategory('rpg', this)">RPG / Otwarty świat</button>
+            <button class="cat-btn" onclick="filterCategory('free', this)">Free to Play</button>
+            <button class="cat-btn" onclick="filterCategory('symulatory', this)">Symulatory / Survival</button>
         </div>
 
-        <h2 id="sectionTitle">Najpopularniejsze gry</h2>
-        <div id="statusMsg" class="status-msg">Wpisz dowolny tytuł powyżej, aby przeszukać cały katalog Steam.</div>
+        <h2 id="sectionTitle">Katalog gier STEM</h2>
         <div class="games-grid" id="gamesGrid"></div>
-    </main>
 
-    <script>
-        const grid = document.getElementById('gamesGrid');
-        const statusMsg = document.getElementById('statusMsg');
-        const sectionTitle = document.getElementById('sectionTitle');
-
-        const popularGames = [
-            { id: 3240220, name: "Grand Theft Auto V Enhanced", priceText: "129,00 zł" },
-            { id: 730, name: "Counter-Strike 2", priceText: "Free to Play" },
-            { id: 1091500, name: "Cyberpunk 2077", priceText: "199,00 zł" },
-            { id: 292030, name: "Wiedźmin 3: Dziki Gon", priceText: "99,99 zł" },
-            { id: 1174180, name: "Red Dead Redemption 2", priceText: "249,90 zł" },
-            { id: 252490, name: "Rust", priceText: "184,99 zł" },
+        <div id="directSearchBox" class="direct-search-box">
+            <p id="directSearchText">Nie widzisz szukanej gry na liście powyżej?</p>
+            <a id="directSteamLink" href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">
