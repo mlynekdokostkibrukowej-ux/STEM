@@ -101,6 +101,11 @@
             margin-bottom: 35px;
             display: flex;
             gap: 10px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-bar:focus-within {
+            border-color: #fa1e4e;
+            box-shadow: 0 0 15px rgba(250, 30, 78, 0.3);
         }
         .search-bar input {
             width: 100%;
@@ -111,6 +116,9 @@
             font-size: 15px;
             outline: none;
         }
+        .search-bar input::placeholder {
+            color: #6c6c85;
+        }
         .clear-btn {
             background-color: transparent;
             color: #9e9eb3;
@@ -120,6 +128,7 @@
             text-transform: uppercase;
             font-size: 12px;
             cursor: pointer;
+            transition: all 0.2s;
         }
         .clear-btn:hover {
             color: #ffffff;
@@ -143,6 +152,10 @@
             border: 1px solid #262636;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
             overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .featured-box:hover {
+            border-color: #fa1e4e;
         }
         .featured-box img {
             width: 62%;
@@ -219,12 +232,14 @@
             color: #ffffff;
             margin-bottom: 6px;
             font-size: 16px;
+            line-height: 1.3;
         }
         .genre-tag {
             color: #6c6c85;
             font-size: 12px;
             margin-bottom: 12px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .steam-warning {
             background-color: rgba(250, 30, 78, 0.1);
@@ -282,6 +297,7 @@
             text-transform: uppercase;
             font-size: 11px;
             letter-spacing: 0.8px;
+            transition: background-color 0.2s, box-shadow 0.2s;
         }
         a.steam-btn:hover {
             background-color: #ff3360;
@@ -304,31 +320,12 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
             cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
         }
         .category-tile:hover {
+            transform: translateY(-3px);
             background: linear-gradient(135deg, #fa1e4e 0%, #7a0b24 100%);
+            box-shadow: 0 6px 20px rgba(250, 30, 78, 0.4);
         }
         .direct-search-box {
             background-color: #12121a;
-            border: 1px solid #fa1e4e;
-            padding: 25px;
-            margin-top: 25px;
-            text-align: center;
-        }
-        .direct-search-box p {
-            color: #e4e4eb;
-            margin-bottom: 15px;
-            font-size: 15px;
-        }
-        @media (max-width: 768px) {
-            .featured-box { flex-direction: column; }
-            .featured-box img, .featured-info { width: 100%; }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="nav-left">
-            <a href="index.html" class="logo">
-                <img src="STEM.png" onerror="this.onerror=null; this.src='stem.png';" alt="STEM Logo">
-                <span class="logo-text">STEM</span>
