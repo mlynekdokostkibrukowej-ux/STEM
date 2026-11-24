@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
     <title>STEM - GX Edition</title>
     <style>
         * {
@@ -184,7 +185,6 @@
             line-height: 1.4;
             margin-bottom: 12px;
         }
-        /* Ostrzeżenie nad przyciskiem */
         .steam-warning {
             background-color: rgba(250, 30, 78, 0.1);
             border-left: 2px solid #fa1e4e;
@@ -205,44 +205,22 @@
             font-weight: bold;
             font-size: 15px;
         }
-        .btn-group {
-            display: flex;
-            gap: 6px;
-        }
         a.steam-btn {
             display: inline-block;
             text-align: center;
             background-color: #fa1e4e;
             color: #ffffff;
             text-decoration: none;
-            padding: 9px 12px;
+            padding: 9px 16px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 0.6px;
+            font-size: 12px;
+            letter-spacing: 0.8px;
             transition: background-color 0.2s, box-shadow 0.2s;
         }
         a.steam-btn:hover {
             background-color: #ff3360;
             box-shadow: 0 0 12px rgba(250, 30, 78, 0.8);
-        }
-        a.web-btn {
-            display: inline-block;
-            text-align: center;
-            background-color: transparent;
-            border: 1px solid #fa1e4e;
-            color: #fa1e4e;
-            text-decoration: none;
-            padding: 8px 10px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 0.6px;
-            transition: background-color 0.2s, color 0.2s;
-        }
-        a.web-btn:hover {
-            background-color: #fa1e4e;
-            color: #ffffff;
         }
         @media (max-width: 768px) {
             .featured-box { flex-direction: column; }
@@ -274,7 +252,8 @@
         <h2>Wyróżnione na Steam</h2>
         <div class="featured-box">
             <img src="https://steamstatic.com" 
-                 onerror="this.onerror=null; this.src='https://placehold.co';" 
+                 referrerpolicy="no-referrer"
+                 onerror="this.onerror=null; this.src='https://steamstatic.com';" 
                  alt="Grand Theft Auto V Enhanced">
             <div class="featured-info">
                 <div>
@@ -287,10 +266,7 @@
                     </div>
                     <div class="price-action">
                         <span class="price-tag">129,00 zł</span>
-                        <div class="btn-group">
-                            <a href="steam://store/3240220" class="steam-btn">Kup na Steam</a>
-                            <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="web-btn">WWW</a>
-                        </div>
+                        <a href="steam://store/3240220" class="steam-btn">Kup na Steam</a>
                     </div>
                 </div>
             </div>
@@ -300,5 +276,23 @@
         <div class="games-grid" id="gamesGrid">
             <div class="game-card" data-title="cyberpunk 2077">
                 <img src="https://steamstatic.com" 
-                     onerror="this.onerror=null; this.src='https://placehold.co';" 
+                     referrerpolicy="no-referrer"
+                     onerror="this.onerror=null; this.src='https://steamstatic.com';" 
                      alt="Cyberpunk 2077">
+                <div class="card-body">
+                    <div>
+                        <h4>Cyberpunk 2077</h4>
+                        <p class="desc">Otwarty świat akcji i przygody osadzony w futurystycznym Night City.</p>
+                    </div>
+                    <div>
+                        <div class="steam-warning">
+                            ⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.
+                        </div>
+                        <div class="price-action">
+                            <span class="price-tag">199,00 zł</span>
+                            <a href="steam://store/1091500" class="steam-btn">Kup na Steam</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
