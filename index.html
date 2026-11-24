@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEM</title>
+    <title>STEM - GX Edition</title>
     <style>
         * {
             box-sizing: border-box;
@@ -62,17 +62,6 @@
             color: #fa1e4e;
             text-shadow: 0 0 10px rgba(250, 30, 78, 0.7);
         }
-        .cart-badge {
-            background-color: transparent;
-            border: 1px solid #fa1e4e;
-            color: #fa1e4e;
-            padding: 6px 16px;
-            font-size: 13px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(250, 30, 78, 0.2);
-        }
         main {
             max-width: 980px;
             margin: 35px auto;
@@ -113,15 +102,23 @@
             border-left: 3px solid #fa1e4e;
             padding-left: 10px;
         }
-        .featured {
-            display: flex;
+        /* Kontener na oficjalny widżet Steam */
+        .steam-widget-container {
             background-color: #12121a;
             border: 1px solid #262636;
-            min-height: 250px;
+            padding: 15px;
             margin-bottom: 45px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
+        .steam-widget-container iframe {
+            width: 100%;
+            height: 190px;
+            border: none;
+        }
+        /* Siatka własnych kart z przyciskiem Kup na Steam */
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -131,6 +128,9 @@
             background-color: #12121a;
             border: 1px solid #262636;
             transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .game-card:hover {
             transform: translateY(-4px);
@@ -149,52 +149,31 @@
         }
         .card-body h4 {
             color: #ffffff;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 16px;
         }
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
+        .card-body p {
+            color: #9e9eb3;
+            font-size: 13px;
+            line-height: 1.4;
+            margin-bottom: 15px;
         }
-        .discount-box {
-            display: flex;
-            align-items: center;
-            background: #09090d;
-            border: 1px solid #262636;
-        }
-        .discount {
+        a.steam-btn {
+            display: block;
+            text-align: center;
             background-color: #fa1e4e;
             color: #ffffff;
-            padding: 5px 8px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .price {
-            padding: 5px 10px;
-            color: #e4e4eb;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        button.buy-btn {
-            background-color: #fa1e4e;
-            border: none;
-            color: #ffffff;
-            padding: 7px 14px;
-            cursor: pointer;
+            text-decoration: none;
+            padding: 9px 14px;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 12px;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
             transition: background-color 0.2s, box-shadow 0.2s;
         }
-        button.buy-btn:hover {
+        a.steam-btn:hover {
             background-color: #ff3360;
             box-shadow: 0 0 12px rgba(250, 30, 78, 0.8);
-        }
-        @media (max-width: 768px) {
-            .featured { flex-direction: column; }
         }
     </style>
 </head>
@@ -212,7 +191,6 @@
                 <a href="#">POMOC</a>
             </nav>
         </div>
-        <div class="cart-badge">Koszyk (<span id="cart-count">0</span>)</div>
     </header>
 
     <main>
@@ -220,24 +198,18 @@
             <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="Szukaj w sklepie...">
         </div>
 
-        <h2>Wyróżnione i polecane</h2>
-        <div class="featured">
-            <!-- Miejsce na Twoją wyróżnioną pozycję -->
+        <h2>Wyróżnione na Steam (Widżet na żywo)</h2>
+        <div class="steam-widget-container">
+            <!-- TUTAJ WKLEJ KOD IFRAME ZE STEAM (np. <iframe src="https://steampowered.com"></iframe>) -->
         </div>
 
-        <h2>Oferty specjalne</h2>
+        <h2>Polecane tytuły</h2>
         <div class="games-grid" id="gamesGrid">
-            <!-- Miejsce na Twoje karty z grami / produktami -->
+            <!-- TUTAJ WKLEJ KARTY Z PRZYCISKIEM "KUP NA STEAM" -->
         </div>
     </main>
 
     <script>
-        let count = 0;
-        function addToCart() {
-            count++;
-            document.getElementById('cart-count').innerText = count;
-        }
-
         function filterGames() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('game-card');
