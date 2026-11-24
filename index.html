@@ -68,6 +68,26 @@
             color: #fa1e4e;
             text-shadow: 0 0 10px rgba(250, 30, 78, 0.7);
         }
+        a.install-steam-btn {
+            background-color: #fa1e4e;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 9px 18px;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid #fa1e4e;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        a.install-steam-btn:hover {
+            background-color: #ff3360;
+            box-shadow: 0 0 15px rgba(250, 30, 78, 0.85);
+            transform: translateY(-1px);
+        }
         main {
             max-width: 1100px;
             margin: 35px auto;
@@ -243,6 +263,9 @@
                 <a href="pomoc.html">POMOC</a>
             </nav>
         </div>
+        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="install-steam-btn">
+            ⬇ Pobierz Steam
+        </a>
     </header>
 
     <main>
@@ -268,7 +291,6 @@
         const statusMsg = document.getElementById('statusMsg');
         const sectionTitle = document.getElementById('sectionTitle');
 
-        // Baza topowych gier ładująca się w 0.01 sekundy bez czekania na zewnętrzne serwery
         const popularGames = [
             { id: 3240220, name: "Grand Theft Auto V Enhanced", priceText: "129,00 zł" },
             { id: 730, name: "Counter-Strike 2", priceText: "Free to Play" },
@@ -276,17 +298,3 @@
             { id: 292030, name: "Wiedźmin 3: Dziki Gon", priceText: "99,99 zł" },
             { id: 1174180, name: "Red Dead Redemption 2", priceText: "249,90 zł" },
             { id: 252490, name: "Rust", priceText: "184,99 zł" },
-            { id: 105600, name: "Terraria", priceText: "45,99 zł" },
-            { id: 1245620, name: "ELDEN RING", priceText: "249,00 zł" },
-            { id: 570, name: "Dota 2", priceText: "Free to Play" },
-            { id: 227300, name: "Euro Truck Simulator 2", priceText: "79,99 zł" },
-            { id: 1938090, name: "Call of Duty®", priceText: "Free to Play" },
-            { id: 413150, name: "Stardew Valley", priceText: "53,99 zł" }
-        ];
-
-        function showPopular(btnElement) {
-            if (btnElement) {
-                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-                btnElement.classList.add('active');
-            }
-            sectionTitle.innerText = "Najpopularniejsze gry";
