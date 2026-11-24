@@ -27,7 +27,7 @@
         .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
         .game-card { background-color: #12121a; border: 1px solid #262636; transition: 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
         .game-card:hover { transform: translateY(-4px); border-color: #fa1e4e; box-shadow: 0 6px 20px rgba(250, 30, 78, 0.35); }
-        .game-card img { width: 100%; height: 145px; object-fit: cover; background-color: #09090d; display: block; border-bottom: 1px solid #262636; }
+        .game-card img { width: 100%; height: 150px; object-fit: cover; background-color: #09090d; display: block; border-bottom: 1px solid #262636; }
         .card-body { padding: 15px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
         .card-body h4 { color: #ffffff; margin-bottom: 6px; font-size: 16px; }
         .genre-tag { color: #6c6c85; font-size: 12px; margin-bottom: 12px; text-transform: uppercase; }
@@ -67,7 +67,7 @@
         <div class="games-grid" id="listaGier">
 
             <div class="game-card" data-nazwa="grand theft auto v enhanced gta 5">
-                <img src="gta.jpg" onerror="this.onerror=null; this.src='https://placehold.co';" alt="GTA V">
+                <img src="GTA.jpg" alt="GTA V">
                 <div class="card-body">
                     <div><h4>Grand Theft Auto V Enhanced</h4><div class="genre-tag">Akcja / Otwarty świat</div></div>
                     <div>
@@ -78,7 +78,7 @@
             </div>
 
             <div class="game-card" data-nazwa="counter strike 2 cs2 cs">
-                <img src="cs2.jpg" onerror="this.onerror=null; this.src='https://placehold.co';" alt="CS2">
+                <img src="CS.jpg" alt="CS2">
                 <div class="card-body">
                     <div><h4>Counter-Strike 2</h4><div class="genre-tag">FPS / Akcja</div></div>
                     <div>
@@ -89,7 +89,7 @@
             </div>
 
             <div class="game-card" data-nazwa="cyberpunk 2077">
-                <img src="cyberpunk.jpg" onerror="this.onerror=null; this.src='https://placehold.co';" alt="Cyberpunk 2077">
+                <img src="CYBERPUNK.jpg" alt="Cyberpunk 2077">
                 <div class="card-body">
                     <div><h4>Cyberpunk 2077</h4><div class="genre-tag">RPG / Sci-Fi</div></div>
                     <div>
@@ -100,7 +100,7 @@
             </div>
 
             <div class="game-card" data-nazwa="wiedzmin 3 dziki gon witcher">
-                <img src="wiedzmin.jpg" onerror="this.onerror=null; this.src='https://placehold.co';" alt="Wiedźmin 3">
+                <img src="wiedzmin.jpg" alt="Wiedźmin 3">
                 <div class="card-body">
                     <div><h4>Wiedźmin 3: Dziki Gon</h4><div class="genre-tag">RPG / Fantasy</div></div>
                     <div>
@@ -111,7 +111,7 @@
             </div>
 
             <div class="game-card" data-nazwa="red dead redemption 2 rdr2">
-                <img src="rdr2.jpg" onerror="this.onerror=null; this.src='https://placehold.co';" alt="RDR2">
+                <img src="READ.jpg" alt="RDR2">
                 <div class="card-body">
                     <div><h4>Red Dead Redemption 2</h4><div class="genre-tag">Akcja / Przygoda</div></div>
                     <div>
@@ -122,9 +122,24 @@
             </div>
 
             <div class="game-card" data-nazwa="rust survival">
-                <img src="rust.jpg" onerror="this.onerror=null; this.src='https://placehold.co';" alt="Rust">
+                <img src="RUST.jpg" alt="Rust">
                 <div class="card-body">
                     <div><h4>Rust</h4><div class="genre-tag">Survival / Multiplayer</div></div>
                     <div>
                         <div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div>
                         <div class="price-action"><span class="price-tag">184,99 zł</span><a href="steam://store/252490" class="steam-btn">Kup na Steam</a></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="brakWynikow" class="no-results">
+            <p>Nie znaleziono tej gry na liście powyżej.</p>
+            <a id="linkSteamSzukaj" href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Szukaj bezpośrednio na Steam</a>
+        </div>
+    </main>
+
+    <script>
+        function szukajGry() {
+            var tekst = document.getElementById('searchBox').value.toLowerCase().trim();
