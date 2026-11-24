@@ -75,11 +75,6 @@
             margin-bottom: 35px;
             display: flex;
             justify-content: space-between;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .search-bar:focus-within {
-            border-color: #fa1e4e;
-            box-shadow: 0 0 15px rgba(250, 30, 78, 0.3);
         }
         .search-bar input {
             width: 100%;
@@ -90,9 +85,6 @@
             font-size: 14px;
             outline: none;
         }
-        .search-bar input::placeholder {
-            color: #6c6c85;
-        }
         h2 {
             font-size: 14px;
             letter-spacing: 2px;
@@ -102,23 +94,18 @@
             border-left: 3px solid #fa1e4e;
             padding-left: 10px;
         }
-        /* Kontener na oficjalny widżet Steam */
         .steam-widget-container {
             background-color: #12121a;
             border: 1px solid #262636;
             padding: 15px;
             margin-bottom: 45px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
         }
         .steam-widget-container iframe {
             width: 100%;
             height: 190px;
             border: none;
         }
-        /* Siatka własnych kart z przyciskiem Kup na Steam */
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -200,12 +187,19 @@
 
         <h2>Wyróżnione na Steam (Widżet na żywo)</h2>
         <div class="steam-widget-container">
-            <!-- TUTAJ WKLEJ KOD IFRAME ZE STEAM (np. <iframe src="https://steampowered.com"></iframe>) -->
+            <iframe src="https://steampowered.com"></iframe>
         </div>
 
         <h2>Polecane tytuły</h2>
         <div class="games-grid" id="gamesGrid">
-            <!-- TUTAJ WKLEJ KARTY Z PRZYCISKIEM "KUP NA STEAM" -->
+            <div class="game-card" data-title="counter strike 2 cs2">
+                <img src="https://steamstatic.com" alt="Counter-Strike 2">
+                <div class="card-body">
+                    <h4>Counter-Strike 2</h4>
+                    <p>Najpopularniejsza taktyczna strzelanka sieciowa od Valve.</p>
+                    <a href="https://steampowered.com" target="_blank" class="steam-btn">Przejdź na Steam</a>
+                </div>
+            </div>
         </div>
     </main>
 
