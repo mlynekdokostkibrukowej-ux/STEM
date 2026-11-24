@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>STEM - GX Edition</title>
+    <title>STEM - GX Edition (Pełny Katalog)</title>
     <style>
         * {
             box-sizing: border-box;
@@ -69,7 +69,7 @@
             text-shadow: 0 0 10px rgba(250, 30, 78, 0.7);
         }
         main {
-            max-width: 980px;
+            max-width: 1100px;
             margin: 35px auto;
             padding: 0 20px;
         }
@@ -78,9 +78,9 @@
             border: 1px solid #2b2b3d;
             border-left: 4px solid #fa1e4e;
             padding: 8px 12px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             display: flex;
-            justify-content: space-between;
+            gap: 10px;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
         .search-bar:focus-within {
@@ -93,57 +93,66 @@
             border: none;
             color: #ffffff;
             padding: 6px 8px;
-            font-size: 14px;
+            font-size: 15px;
             outline: none;
         }
         .search-bar input::placeholder {
             color: #6c6c85;
         }
+        .search-btn {
+            background-color: #fa1e4e;
+            color: #ffffff;
+            border: none;
+            padding: 0 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background-color 0.2s;
+        }
+        .search-btn:hover {
+            background-color: #ff3360;
+        }
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .cat-btn {
+            background-color: #12121a;
+            border: 1px solid #262636;
+            color: #9e9eb3;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cat-btn.active, .cat-btn:hover {
+            border-color: #fa1e4e;
+            color: #ffffff;
+            background-color: rgba(250, 30, 78, 0.15);
+        }
         h2 {
             font-size: 14px;
             letter-spacing: 2px;
-            margin-bottom: 14px;
+            margin-bottom: 18px;
             color: #ffffff;
             text-transform: uppercase;
             border-left: 3px solid #fa1e4e;
             padding-left: 10px;
         }
-        .featured-box {
-            display: flex;
-            background-color: #12121a;
-            border: 1px solid #262636;
-            margin-bottom: 45px;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
-            overflow: hidden;
-        }
-        .featured-box img {
-            width: 60%;
-            min-height: 260px;
-            object-fit: cover;
-            background-color: #09090d;
-            border-right: 1px solid #262636;
-        }
-        .featured-info {
-            padding: 25px;
-            width: 40%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .featured-info h3 {
-            font-size: 22px;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-        .featured-info p {
+        .status-msg {
             color: #9e9eb3;
             font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
             gap: 20px;
         }
         .game-card {
@@ -161,7 +170,7 @@
         }
         .game-card img {
             width: 100%;
-            height: 150px;
+            height: 145px;
             object-fit: cover;
             background-color: #09090d;
             display: block;
@@ -176,14 +185,9 @@
         }
         .card-body h4 {
             color: #ffffff;
-            margin-bottom: 8px;
-            font-size: 16px;
-        }
-        .card-body p.desc {
-            color: #9e9eb3;
-            font-size: 13px;
-            line-height: 1.4;
             margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.3;
         }
         .steam-warning {
             background-color: rgba(250, 30, 78, 0.1);
@@ -199,6 +203,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 8px;
+            margin-top: 5px;
         }
         .price-tag {
             color: #fa1e4e;
@@ -222,10 +227,6 @@
             background-color: #ff3360;
             box-shadow: 0 0 12px rgba(250, 30, 78, 0.8);
         }
-        @media (max-width: 768px) {
-            .featured-box { flex-direction: column; }
-            .featured-box img, .featured-info { width: 100%; }
-        }
     </style>
 </head>
 <body>
@@ -246,53 +247,54 @@
 
     <main>
         <div class="search-bar">
-            <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="Szukaj w sklepie...">
+            <input type="text" id="searchInput" onkeypress="if(event.key === 'Enter') searchSteam()" placeholder="Wpisz nazwę dowolnej gry ze Steam (np. Minecraft, Rust, Terraria, Elden Ring)...">
+            <button class="search-btn" onclick="searchSteam()">Szukaj</button>
         </div>
 
-        <h2>Wyróżnione na Steam</h2>
-        <div class="featured-box">
-            <img src="https://steamstatic.com" 
-                 referrerpolicy="no-referrer"
-                 onerror="this.onerror=null; this.src='https://steamstatic.com';" 
-                 alt="Grand Theft Auto V Enhanced">
-            <div class="featured-info">
-                <div>
-                    <h3>Grand Theft Auto V Enhanced</h3>
-                    <p>Ulepszona wersja bestsellerowej gry akcji w otwartym świecie Los Santos oraz GTA Online.</p>
-                </div>
-                <div>
-                    <div class="steam-warning">
-                        ⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.
-                    </div>
-                    <div class="price-action">
-                        <span class="price-tag">129,00 zł</span>
-                        <a href="steam://store/3240220" class="steam-btn">Kup na Steam</a>
-                    </div>
-                </div>
-            </div>
+        <div class="category-tabs">
+            <button class="cat-btn active" onclick="loadCategory('top_sellers', this)">Bestsellery Steam</button>
+            <button class="cat-btn" onclick="loadCategory('specials', this)">Promocje</button>
+            <button class="cat-btn" onclick="loadCategory('new_releases', this)">Nowości</button>
+            <button class="cat-btn" onclick="loadCategory('coming_soon', this)">Nadchodzące</button>
         </div>
 
-        <h2>Polecane tytuły</h2>
-        <div class="games-grid" id="gamesGrid">
-            <div class="game-card" data-title="cyberpunk 2077">
-                <img src="https://steamstatic.com" 
-                     referrerpolicy="no-referrer"
-                     onerror="this.onerror=null; this.src='https://steamstatic.com';" 
-                     alt="Cyberpunk 2077">
-                <div class="card-body">
-                    <div>
-                        <h4>Cyberpunk 2077</h4>
-                        <p class="desc">Otwarty świat akcji i przygody osadzony w futurystycznym Night City.</p>
-                    </div>
-                    <div>
-                        <div class="steam-warning">
-                            ⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.
-                        </div>
-                        <div class="price-action">
-                            <span class="price-tag">199,00 zł</span>
-                            <a href="steam://store/1091500" class="steam-btn">Kup na Steam</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <h2 id="sectionTitle">Bestsellery Steam</h2>
+        <div id="statusMsg" class="status-msg">Ładowanie katalogu gier ze Steam...</div>
+        <div class="games-grid" id="gamesGrid"></div>
+    </main>
+
+    <script>
+        const grid = document.getElementById('gamesGrid');
+        const statusMsg = document.getElementById('statusMsg');
+        const sectionTitle = document.getElementById('sectionTitle');
+
+        // Pobieranie kategorii ze sklepu Steam przez publiczne proxy CORS
+        async function loadCategory(category, btnElement) {
+            if (btnElement) {
+                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                btnElement.classList.add('active');
+                sectionTitle.innerText = btnElement.innerText;
+            }
+
+            grid.innerHTML = '';
+            statusMsg.innerText = 'Pobieranie aktualnych gier ze Steam...';
+
+            try {
+                const steamUrl = encodeURIComponent('https://steampowered.com');
+                const response = await fetch(`https://allorigins.win{steamUrl}`);
+                const data = await response.json();
+                const parsed = JSON.parse(data.contents);
+
+                const items = parsed[category]?.items || [];
+                if (items.length === 0) {
+                    statusMsg.innerText = 'Nie znaleziono gier w tej kategorii.';
+                    return;
+                }
+
+                statusMsg.innerText = `Wyświetlono ${items.length} gier ze sklepu Steam:`;
+                renderGames(items);
+            } catch (error) {
+                statusMsg.innerText = 'Wystąpił problem z połączeniem z bazą Steam. Spróbuj odświeżyć stronę lub użyj wyszukiwarki.';
+            }
+        }
 
