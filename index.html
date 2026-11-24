@@ -138,7 +138,7 @@
             color: #9e9eb3;
             font-size: 14px;
             line-height: 1.5;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .games-grid {
             display: grid;
@@ -168,23 +168,36 @@
         }
         .card-body {
             padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
         }
         .card-body h4 {
             color: #ffffff;
             margin-bottom: 8px;
             font-size: 16px;
         }
-        .card-body p {
+        .card-body p.desc {
             color: #9e9eb3;
             font-size: 13px;
             line-height: 1.4;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+        }
+        /* Ostrzeżenie nad przyciskiem */
+        .steam-warning {
+            background-color: rgba(250, 30, 78, 0.1);
+            border-left: 2px solid #fa1e4e;
+            color: #ffb3c4;
+            font-size: 11px;
+            line-height: 1.35;
+            padding: 6px 8px;
+            margin-bottom: 10px;
         }
         .price-action {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 10px;
             gap: 8px;
         }
         .price-tag {
@@ -268,11 +281,16 @@
                     <h3>Grand Theft Auto V Enhanced</h3>
                     <p>Ulepszona wersja bestsellerowej gry akcji w otwartym świecie Los Santos oraz GTA Online.</p>
                 </div>
-                <div class="price-action">
-                    <span class="price-tag">129,00 zł</span>
-                    <div class="btn-group">
-                        <a href="steam://store/3240220" class="steam-btn">Aplikacja Steam</a>
-                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="web-btn">WWW</a>
+                <div>
+                    <div class="steam-warning">
+                        ⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.
+                    </div>
+                    <div class="price-action">
+                        <span class="price-tag">129,00 zł</span>
+                        <div class="btn-group">
+                            <a href="steam://store/3240220" class="steam-btn">Kup na Steam</a>
+                            <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="web-btn">WWW</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -284,16 +302,3 @@
                 <img src="https://steamstatic.com" 
                      onerror="this.onerror=null; this.src='https://placehold.co';" 
                      alt="Cyberpunk 2077">
-                <div class="card-body">
-                    <h4>Cyberpunk 2077</h4>
-                    <p>Otwarty świat akcji i przygody osadzony w futurystycznym Night City.</p>
-                    <div class="price-action">
-                        <span class="price-tag">199,00 zł</span>
-                        <div class="btn-group">
-                            <a href="steam://store/1091500" class="steam-btn">Aplikacja Steam</a>
-                            <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="web-btn">WWW</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
