@@ -75,6 +75,11 @@
             margin-bottom: 35px;
             display: flex;
             justify-content: space-between;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-bar:focus-within {
+            border-color: #fa1e4e;
+            box-shadow: 0 0 15px rgba(250, 30, 78, 0.3);
         }
         .search-bar input {
             width: 100%;
@@ -85,6 +90,9 @@
             font-size: 14px;
             outline: none;
         }
+        .search-bar input::placeholder {
+            color: #6c6c85;
+        }
         h2 {
             font-size: 14px;
             letter-spacing: 2px;
@@ -94,7 +102,6 @@
             border-left: 3px solid #fa1e4e;
             padding-left: 10px;
         }
-        /* Wyróżniona gra na górze */
         .featured-box {
             display: flex;
             background-color: #12121a;
@@ -126,7 +133,6 @@
             line-height: 1.5;
             margin-bottom: 20px;
         }
-        /* Siatka kart gier */
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -231,7 +237,7 @@
                 </div>
                 <div class="price-action">
                     <span class="price-tag">199,00 zł</span>
-                    <a href="https://steampowered.com" target="_blank" class="steam-btn">Kup na Steam</a>
+                    <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Kup na Steam</a>
                 </div>
             </div>
         </div>
@@ -245,7 +251,7 @@
                     <p>Najpopularniejsza taktyczna strzelanka sieciowa od Valve.</p>
                     <div class="price-action">
                         <span class="price-tag">Free to Play</span>
-                        <a href="https://steampowered.com" target="_blank" class="steam-btn">Kup na Steam</a>
+                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Kup na Steam</a>
                     </div>
                 </div>
             </div>
@@ -257,7 +263,7 @@
                     <p>Wciel się w Geralta z Rivii w jednej z najwyżej ocenianych gier RPG.</p>
                     <div class="price-action">
                         <span class="price-tag">99,99 zł</span>
-                        <a href="https://steampowered.com" target="_blank" class="steam-btn">Kup na Steam</a>
+                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Kup na Steam</a>
                     </div>
                 </div>
             </div>
@@ -269,7 +275,7 @@
                     <p>Epicka opowieść o życiu na Dzikim Zachodzie u schyłku ery rewolwerowców.</p>
                     <div class="price-action">
                         <span class="price-tag">249,90 zł</span>
-                        <a href="https://steampowered.com" target="_blank" class="steam-btn">Kup na Steam</a>
+                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Kup na Steam</a>
                     </div>
                 </div>
             </div>
@@ -278,13 +284,3 @@
 
     <script>
         function filterGames() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.getElementsByClassName('game-card');
-            for (let i = 0; i < cards.length; i++) {
-                let title = cards[i].getAttribute('data-title');
-                cards[i].style.display = title.includes(input) ? "" : "none";
-            }
-        }
-    </script>
-</body>
-</html>
