@@ -94,18 +94,39 @@
             border-left: 3px solid #fa1e4e;
             padding-left: 10px;
         }
-        .steam-widget-container {
+        /* Wyróżniona gra na górze */
+        .featured-box {
+            display: flex;
             background-color: #12121a;
             border: 1px solid #262636;
-            padding: 15px;
             margin-bottom: 45px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
         }
-        .steam-widget-container iframe {
-            width: 100%;
-            height: 190px;
-            border: none;
+        .featured-box img {
+            width: 60%;
+            object-fit: cover;
+            border-right: 1px solid #262636;
         }
+        .featured-info {
+            padding: 25px;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .featured-info h3 {
+            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .featured-info p {
+            color: #9e9eb3;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        /* Siatka kart gier */
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -145,13 +166,24 @@
             line-height: 1.4;
             margin-bottom: 15px;
         }
+        .price-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .price-tag {
+            color: #fa1e4e;
+            font-weight: bold;
+            font-size: 15px;
+        }
         a.steam-btn {
-            display: block;
+            display: inline-block;
             text-align: center;
             background-color: #fa1e4e;
             color: #ffffff;
             text-decoration: none;
-            padding: 9px 14px;
+            padding: 9px 16px;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 12px;
@@ -161,6 +193,10 @@
         a.steam-btn:hover {
             background-color: #ff3360;
             box-shadow: 0 0 12px rgba(250, 30, 78, 0.8);
+        }
+        @media (max-width: 768px) {
+            .featured-box { flex-direction: column; }
+            .featured-box img, .featured-info { width: 100%; }
         }
     </style>
 </head>
@@ -185,9 +221,19 @@
             <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="Szukaj w sklepie...">
         </div>
 
-        <h2>Wyróżnione na Steam (Widżet na żywo)</h2>
-        <div class="steam-widget-container">
-            <iframe src="https://steampowered.com"></iframe>
+        <h2>Wyróżnione na Steam</h2>
+        <div class="featured-box">
+            <img src="https://steamstatic.com" alt="Cyberpunk 2077">
+            <div class="featured-info">
+                <div>
+                    <h3>Cyberpunk 2077</h3>
+                    <p>Otwarty świat akcji i przygody osadzony w futurystycznym Night City. Zobacz pełną ofertę i recenzje bezpośrednio w sklepie Steam.</p>
+                </div>
+                <div class="price-action">
+                    <span class="price-tag">199,00 zł</span>
+                    <a href="https://steampowered.com" target="_blank" class="steam-btn">Kup na Steam</a>
+                </div>
+            </div>
         </div>
 
         <h2>Polecane tytuły</h2>
@@ -197,7 +243,34 @@
                 <div class="card-body">
                     <h4>Counter-Strike 2</h4>
                     <p>Najpopularniejsza taktyczna strzelanka sieciowa od Valve.</p>
-                    <a href="https://steampowered.com" target="_blank" class="steam-btn">Przejdź na Steam</a>
+                    <div class="price-action">
+                        <span class="price-tag">Free to Play</span>
+                        <a href="https://steampowered.com" target="_blank" class="steam-btn">Kup na Steam</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" data-title="wiedzmin 3 dziki gon witcher">
+                <img src="https://steamstatic.com" alt="Wiedźmin 3">
+                <div class="card-body">
+                    <h4>Wiedźmin 3: Dziki Gon</h4>
+                    <p>Wciel się w Geralta z Rivii w jednej z najwyżej ocenianych gier RPG.</p>
+                    <div class="price-action">
+                        <span class="price-tag">99,99 zł</span>
+                        <a href="https://steampowered.com" target="_blank" class="steam-btn">Kup na Steam</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" data-title="red dead redemption 2 rdr2">
+                <img src="https://steamstatic.com" alt="Red Dead Redemption 2">
+                <div class="card-body">
+                    <h4>Red Dead Redemption 2</h4>
+                    <p>Epicka opowieść o życiu na Dzikim Zachodzie u schyłku ery rewolwerowców.</p>
+                    <div class="price-action">
+                        <span class="price-tag">249,90 zł</span>
+                        <a href="https://steampowered.com" target="_blank" class="steam-btn">Kup na Steam</a>
+                    </div>
                 </div>
             </div>
         </div>
