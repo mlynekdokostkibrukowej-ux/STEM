@@ -185,11 +185,16 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 10px;
+            gap: 8px;
         }
         .price-tag {
             color: #fa1e4e;
             font-weight: bold;
             font-size: 15px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 6px;
         }
         a.steam-btn {
             display: inline-block;
@@ -197,16 +202,34 @@
             background-color: #fa1e4e;
             color: #ffffff;
             text-decoration: none;
-            padding: 9px 16px;
+            padding: 9px 12px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 0.8px;
+            font-size: 11px;
+            letter-spacing: 0.6px;
             transition: background-color 0.2s, box-shadow 0.2s;
         }
         a.steam-btn:hover {
             background-color: #ff3360;
             box-shadow: 0 0 12px rgba(250, 30, 78, 0.8);
+        }
+        a.web-btn {
+            display: inline-block;
+            text-align: center;
+            background-color: transparent;
+            border: 1px solid #fa1e4e;
+            color: #fa1e4e;
+            text-decoration: none;
+            padding: 8px 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.6px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        a.web-btn:hover {
+            background-color: #fa1e4e;
+            color: #ffffff;
         }
         @media (max-width: 768px) {
             .featured-box { flex-direction: column; }
@@ -247,7 +270,10 @@
                 </div>
                 <div class="price-action">
                     <span class="price-tag">129,00 zł</span>
-                    <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Zobacz na Steam</a>
+                    <div class="btn-group">
+                        <a href="steam://store/3240220" class="steam-btn">Aplikacja Steam</a>
+                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="web-btn">WWW</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -263,23 +289,11 @@
                     <p>Otwarty świat akcji i przygody osadzony w futurystycznym Night City.</p>
                     <div class="price-action">
                         <span class="price-tag">199,00 zł</span>
-                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Zobacz na Steam</a>
+                        <div class="btn-group">
+                            <a href="steam://store/1091500" class="steam-btn">Aplikacja Steam</a>
+                            <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="web-btn">WWW</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="game-card" data-title="counter strike 2 cs2">
-                <img src="https://steamstatic.com" 
-                     onerror="this.onerror=null; this.src='https://placehold.co';" 
-                     alt="Counter-Strike 2">
-                <div class="card-body">
-                    <h4>Counter-Strike 2</h4>
-                    <p>Najpopularniejsza taktyczna strzelanka sieciowa od Valve.</p>
-                    <div class="price-action">
-                        <span class="price-tag">Free to Play</span>
-                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Zobacz na Steam</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="game-card" data-title="wiedzmin 3 dziki gon witcher">
