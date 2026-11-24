@@ -229,21 +229,33 @@
 
         <h2>Wyróżnione na Steam</h2>
         <div class="featured-box">
-            <img src="https://steamstatic.com" alt="Cyberpunk 2077">
+            <img src="https://steamstatic.com" alt="Grand Theft Auto V Enhanced">
             <div class="featured-info">
                 <div>
-                    <h3>Cyberpunk 2077</h3>
-                    <p>Otwarty świat akcji i przygody osadzony w futurystycznym Night City. Zobacz pełną ofertę i recenzje bezpośrednio w sklepie Steam.</p>
+                    <h3>Grand Theft Auto V Enhanced</h3>
+                    <p>Ulepszona wersja bestsellerowej gry akcji w otwartym świecie Los Santos oraz GTA Online.</p>
                 </div>
                 <div class="price-action">
-                    <span class="price-tag">199,00 zł</span>
-                    <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Kup na Steam</a>
+                    <span class="price-tag">129,00 zł</span>
+                    <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Zobacz na Steam</a>
                 </div>
             </div>
         </div>
 
         <h2>Polecane tytuły</h2>
         <div class="games-grid" id="gamesGrid">
+            <div class="game-card" data-title="cyberpunk 2077">
+                <img src="https://steamstatic.com" alt="Cyberpunk 2077">
+                <div class="card-body">
+                    <h4>Cyberpunk 2077</h4>
+                    <p>Otwarty świat akcji i przygody osadzony w futurystycznym Night City.</p>
+                    <div class="price-action">
+                        <span class="price-tag">199,00 zł</span>
+                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Zobacz na Steam</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="game-card" data-title="counter strike 2 cs2">
                 <img src="https://steamstatic.com" alt="Counter-Strike 2">
                 <div class="card-body">
@@ -251,7 +263,7 @@
                     <p>Najpopularniejsza taktyczna strzelanka sieciowa od Valve.</p>
                     <div class="price-action">
                         <span class="price-tag">Free to Play</span>
-                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Kup na Steam</a>
+                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Zobacz na Steam</a>
                     </div>
                 </div>
             </div>
@@ -263,19 +275,7 @@
                     <p>Wciel się w Geralta z Rivii w jednej z najwyżej ocenianych gier RPG.</p>
                     <div class="price-action">
                         <span class="price-tag">99,99 zł</span>
-                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Kup na Steam</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="game-card" data-title="red dead redemption 2 rdr2">
-                <img src="https://steamstatic.com" alt="Red Dead Redemption 2">
-                <div class="card-body">
-                    <h4>Red Dead Redemption 2</h4>
-                    <p>Epicka opowieść o życiu na Dzikim Zachodzie u schyłku ery rewolwerowców.</p>
-                    <div class="price-action">
-                        <span class="price-tag">249,90 zł</span>
-                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Kup na Steam</a>
+                        <a href="https://steampowered.com" target="_blank" rel="noopener noreferrer" class="steam-btn">Zobacz na Steam</a>
                     </div>
                 </div>
             </div>
@@ -284,3 +284,4 @@
 
     <script>
         function filterGames() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
