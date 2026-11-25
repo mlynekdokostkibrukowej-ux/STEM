@@ -53,10 +53,8 @@
             <input type="text" id="searchBox" oninput="szukajGry()" placeholder="Szukaj wśród 40 gier (np. GTA, CS2, Helldivers, DayZ, Sims)...">
             <button class="clear-btn" onclick="wyczysc()">Wyczyść</button>
         </div>
-
         <h2>Katalog gier STEM (40 tytułów)</h2>
         <div class="games-grid" id="listaGier"></div>
-
         <div id="brakWynikow" class="no-results">
             <p style="margin-bottom:15px;">Nie znaleziono tej gry na liście powyżej.</p>
             <a id="linkSteamSzukaj" href="https://steampowered.com" target="_blank" class="steam-btn">Szukaj bezpośrednio na Steam</a>
@@ -64,55 +62,78 @@
     </main>
 
     <script>
-        var gry = [
-            { id: 3240220, nazwa: "Grand Theft Auto V Enhanced", gatunek: "Akcja / Otwarty świat", cena: "129,00 zł", img: "GTA.jpg" },
-            { id: 730, nazwa: "Counter-Strike 2", gatunek: "FPS / Akcja", cena: "Free to Play", img: "CS.jpg" },
-            { id: 1091500, nazwa: "Cyberpunk 2077", gatunek: "RPG / Sci-Fi", cena: "199,00 zł", img: "CYBERPUNK.jpg" },
-            { id: 292030, nazwa: "Wiedźmin 3: Dziki Gon", gatunek: "RPG / Fantasy", cena: "99,99 zł", img: "wiedzmin.jpg" },
-            { id: 1174180, nazwa: "Red Dead Redemption 2", gatunek: "Akcja / Przygoda", cena: "249,90 zł", img: "READ.jpg" },
-            { id: 252490, nazwa: "Rust", gatunek: "Survival / Multiplayer", cena: "184,99 zł", img: "RUST.jpg" },
-            { id: 105600, nazwa: "Terraria", gatunek: "Sandbox / Przygoda", cena: "45,99 zł", img: "TERRARIA.jpg" },
-            { id: 1245620, nazwa: "ELDEN RING", gatunek: "RPG / Souls-like", cena: "249,00 zł", img: "ELDENRING.jpg" },
-            { id: 227300, nazwa: "Euro Truck Simulator 2", gatunek: "Symulator / Jazda", cena: "79,99 zł", img: "EUROTRUCKSIMULATOR.jpg" },
-            { id: 1086940, nazwa: "Baldur's Gate 3", gatunek: "RPG / Strategia", cena: "249,00 zł", img: "BALDURS.jpg" },
-            { id: 1551360, nazwa: "Forza Horizon 5", gatunek: "Wyścigi / Otwarty świat", cena: "249,90 zł", img: "FORZA.jpg" },
-            { id: 1623730, nazwa: "Palworld", gatunek: "Survival / Otwarty świat", cena: "138,99 zł", img: "PALWORLD.webp" },
-            { id: 570, nazwa: "Dota 2", gatunek: "MOBA / Strategia", cena: "Free to Play", img: "DOTA.jpg" },
-            { id: 1172470, nazwa: "Apex Legends™", gatunek: "Battle Royale / FPS", cena: "Free to Play", img: "APEX.jpg" },
-            { id: 578080, nazwa: "PUBG: BATTLEGROUNDS", gatunek: "Battle Royale / Strzelanka", cena: "Free to Play", img: "PUBG.jpg" },
-            { id: 892970, nazwa: "Valheim", gatunek: "Survival / Wikingowie", cena: "71,99 zł", img: "obraz_2026-11-25_152604208.png" },
-            { id: 413150, nazwa: "Stardew Valley", gatunek: "Symulator / RPG", cena: "53,99 zł", img: "STARDEW.jpg" },
-            { id: 2358720, nazwa: "Black Myth: Wukong", gatunek: "RPG Akcji", cena: "249,00 zł", img: "WUKONG.jpg" },
-            { id: 990080, nazwa: "Hogwarts Legacy", gatunek: "RPG / Otwarty świat", cena: "269,00 zł", img: "HOGWARTS.jpg" },
-            { id: 1593500, nazwa: "God of War", gatunek: "Akcja / Przygoda", cena: "219,00 zł", img: "GOD.jpg" },
-            { id: 1808500, nazwa: "ARC Raiders", gatunek: "Strzelanka / Sci-Fi", cena: "179,00 zł", img: "" },
-            { id: 553850, nazwa: "HELLDIVERS™ 2", gatunek: "Akcja / Kooperacja", cena: "169,00 zł", img: "" },
-            { id: 230410, nazwa: "Warframe", gatunek: "Akcja / RPG / Sci-Fi", cena: "Free to Play", img: "" },
-            { id: 2767030, nazwa: "Marvel Rivals", gatunek: "Hero Shooter / Akcja", cena: "Free to Play", img: "" },
-            { id: 1085660, nazwa: "Destiny 2", gatunek: "FPS / MMO / Sci-Fi", cena: "Free to Play", img: "" },
-            { id: 440, nazwa: "Team Fortress 2", gatunek: "FPS / Klasyka", cena: "Free to Play", img: "" },
-            { id: 1222670, nazwa: "The Sims™ 4", gatunek: "Symulator życia", cena: "Free to Play", img: "" },
-            { id: 236390, nazwa: "War Thunder", gatunek: "Symulator / Pojazdy", cena: "Free to Play", img: "" },
-            { id: 1407200, nazwa: "World of Tanks", gatunek: "Akcja / Czołgi", cena: "Free to Play", img: "" },
-            { id: 252950, nazwa: "Rocket League", gatunek: "Sportowe / Wyścigi", cena: "Free to Play", img: "" },
-            { id: 381210, nazwa: "Dead by Daylight", gatunek: "Horror / Multiplayer", cena: "71,99 zł", img: "" },
-            { id: 739630, nazwa: "Phasmophobia", gatunek: "Horror / Kooperacja", cena: "79,99 zł", img: "" },
-            { id: 1966720, nazwa: "Lethal Company", gatunek: "Horror / Kooperacja", cena: "45,99 zł", img: "" },
-            { id: 2881650, nazwa: "Content Warning", gatunek: "Horror / Komedia", cena: "36,99 zł", img: "" },
-            { id: 1326470, nazwa: "Sons Of The Forest", gatunek: "Survival / Horror", cena: "138,99 zł", img: "" },
-            { id: 2399830, nazwa: "ARK: Survival Ascended", gatunek: "Survival / Dinozaury", cena: "208,99 zł", img: "" },
-            { id: 221100, nazwa: "DayZ", gatunek: "Survival / Zombie", cena: "219,00 zł", img: "" },
-            { id: 284160, nazwa: "BeamNG.drive", gatunek: "Symulator / Fizyka jazdy", cena: "114,99 zł", img: "" },
-            { id: 526870, nazwa: "Satisfactory", gatunek: "Budowanie / Automatyzacja", cena: "184,99 zł", img: "" },
-            { id: 427520, nazwa: "Factorio", gatunek: "Strategia / Automatyzacja", cena: "160,00 zł", img: "" }
+        var dane = [
+            [3240220, "Grand Theft Auto V Enhanced", "Akcja / Otwarty świat", "129,00 zł", "GTA.jpg"],
+            [730, "Counter-Strike 2", "FPS / Akcja", "Free to Play", "CS.jpg"],
+            [1091500, "Cyberpunk 2077", "RPG / Sci-Fi", "199,00 zł", "CYBERPUNK.jpg"],
+            [292030, "Wiedźmin 3: Dziki Gon", "RPG / Fantasy", "99,99 zł", "wiedzmin.jpg"],
+            [1174180, "Red Dead Redemption 2", "Akcja / Przygoda", "249,90 zł", "READ.jpg"],
+            [252490, "Rust", "Survival / Multiplayer", "184,99 zł", "RUST.jpg"],
+            [105600, "Terraria", "Sandbox / Przygoda", "45,99 zł", "TERRARIA.jpg"],
+            [1245620, "ELDEN RING", "RPG / Souls-like", "249,00 zł", "ELDENRING.jpg"],
+            [227300, "Euro Truck Simulator 2", "Symulator / Jazda", "79,99 zł", "EUROTRUCKSIMULATOR.jpg"],
+            [1086940, "Baldur's Gate 3", "RPG / Strategia", "249,00 zł", "BALDURS.jpg"],
+            [1551360, "Forza Horizon 5", "Wyścigi / Otwarty świat", "249,90 zł", "FORZA.jpg"],
+            [1623730, "Palworld", "Survival / Otwarty świat", "138,99 zł", "PALWORLD.webp"],
+            [570, "Dota 2", "MOBA / Strategia", "Free to Play", "DOTA.jpg"],
+            [1172470, "Apex Legends™", "Battle Royale / FPS", "Free to Play", "APEX.jpg"],
+            [578080, "PUBG: BATTLEGROUNDS", "Battle Royale / Strzelanka", "Free to Play", "PUBG.jpg"],
+            [892970, "Valheim", "Survival / Wikingowie", "71,99 zł", "obraz_2026-11-25_152604208.png"],
+            [413150, "Stardew Valley", "Symulator / RPG", "53,99 zł", "STARDEW.jpg"],
+            [2358720, "Black Myth: Wukong", "RPG Akcji", "249,00 zł", "WUKONG.jpg"],
+            [990080, "Hogwarts Legacy", "RPG / Otwarty świat", "269,00 zł", "HOGWARTS.jpg"],
+            [1593500, "God of War", "Akcja / Przygoda", "219,00 zł", "GOD.jpg"],
+            [1808500, "ARC Raiders", "Strzelanka / Sci-Fi", "179,00 zł", ""],
+            [553850, "HELLDIVERS™ 2", "Akcja / Kooperacja", "169,00 zł", ""],
+            [230410, "Warframe", "Akcja / RPG / Sci-Fi", "Free to Play", ""],
+            [2767030, "Marvel Rivals", "Hero Shooter / Akcja", "Free to Play", ""],
+            [1085660, "Destiny 2", "FPS / MMO / Sci-Fi", "Free to Play", ""],
+            [440, "Team Fortress 2", "FPS / Klasyka", "Free to Play", ""],
+            [1222670, "The Sims™ 4", "Symulator życia", "Free to Play", ""],
+            [236390, "War Thunder", "Symulator / Pojazdy", "Free to Play", ""],
+            [1407200, "World of Tanks", "Akcja / Czołgi", "Free to Play", ""],
+            [252950, "Rocket League", "Sportowe / Wyścigi", "Free to Play", ""],
+            [381210, "Dead by Daylight", "Horror / Multiplayer", "71,99 zł", ""],
+            [739630, "Phasmophobia", "Horror / Kooperacja", "79,99 zł", ""],
+            [1966720, "Lethal Company", "Horror / Kooperacja", "45,99 zł", ""],
+            [2881650, "Content Warning", "Horror / Komedia", "36,99 zł", ""],
+            [1326470, "Sons Of The Forest", "Survival / Horror", "138,99 zł", ""],
+            [2399830, "ARK: Survival Ascended", "Survival / Dinozaury", "208,99 zł", ""],
+            [221100, "DayZ", "Survival / Zombie", "219,00 zł", ""],
+            [284160, "BeamNG.drive", "Symulator / Fizyka jazdy", "114,99 zł", ""],
+            [526870, "Satisfactory", "Budowanie / Automatyzacja", "184,99 zł", ""],
+            [427520, "Factorio", "Strategia / Automatyzacja", "160,00 zł", ""]
         ];
 
         function pokazGry(lista) {
-            var kontener = document.getElementById('listaGier');
-            kontener.innerHTML = '';
+            var html = '';
             for (var i = 0; i < lista.length; i++) {
                 var g = lista[i];
-                var obrazek = g.img ? '<img src="' + g.img + '" alt="' + g.nazwa + '">' : '';
-                kontener.innerHTML += 
-                    '<div class="game-card">' + obrazek +
-                        '<div class="card-body">' +
+                var obrazek = g[4] ? '<img src="' + g[4] + '" alt="' + g[1] + '">' : '';
+                html += '<div class="game-card">' + obrazek + '<div class="card-body"><div><h4>' + g[1] + '</h4><div class="genre-tag">' + g[2] + '</div></div><div><div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div><div class="price-action"><span class="price-tag">' + g[3] + '</span><a href="steam://store/' + g[0] + '" class="steam-btn">Kup na Steam</a></div></div></div></div>';
+            }
+            document.getElementById('listaGier').innerHTML = html;
+        }
+
+        function szukajGry() {
+            var t = document.getElementById('searchBox').value.toLowerCase().trim();
+            var w = dane.filter(function(g) { return g[1].toLowerCase().indexOf(t) > -1 || g[2].toLowerCase().indexOf(t) > -1; });
+            pokazGry(w);
+            var b = document.getElementById('brakWynikow');
+            if (w.length === 0 && t.length > 0) {
+                b.style.display = 'block';
+                document.getElementById('linkSteamSzukaj').href = 'https://steampowered.com?term=' + encodeURIComponent(t);
+            } else {
+                b.style.display = 'none';
+            }
+        }
+
+        function wyczysc() {
+            document.getElementById('searchBox').value = '';
+            szukajGry();
+        }
+
+        pokazGry(dane);
+    </script>
+</body>
+</html>
