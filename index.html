@@ -7,14 +7,22 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",Arial,sans-serif}
 body{background:radial-gradient(circle at top center,#1b1024 0%,#09090d 75%);color:#e4e4eb;min-height:100vh}
-header{background:#0d0d12;padding:15px 4%;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #fa1e4e;box-shadow:0 4px 20px rgba(250,30,78,.25)}
+header{background:#0d0d12;padding:15px 4%;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #fa1e4e;box-shadow:0 4px 20px rgba(250,30,78,.25);flex-wrap:wrap;gap:15px}
 .nav-left{display:flex;align-items:center;gap:45px}
 .logo{display:flex;align-items:center;gap:14px;text-decoration:none}
 .logo img{height:45px;width:auto;display:block}
 .logo-text{color:#fff;font-size:26px;font-weight:900;letter-spacing:3px}
 nav a{color:#9e9eb3;text-decoration:none;margin-right:22px;font-weight:800;font-size:14px;letter-spacing:1px}
 nav a.active,nav a:hover{color:#fa1e4e}
-a.install-btn{background:#fa1e4e;color:#fff;text-decoration:none;padding:9px 18px;font-size:13px;font-weight:800;text-transform:uppercase}
+.header-right{display:flex;align-items:center;gap:12px}
+a.install-btn{background:#fa1e4e;color:#fff;text-decoration:none;padding:9px 16px;font-size:12px;font-weight:800;text-transform:uppercase}
+.login-btn{background:transparent;color:#fff;border:1px solid #fa1e4e;padding:9px 16px;font-size:12px;font-weight:800;text-transform:uppercase;cursor:pointer;transition:.2s}
+.login-btn:hover{background:rgba(250,30,78,.2);box-shadow:0 0 12px rgba(250,30,78,.6)}
+.user-badge{display:none;align-items:center;gap:10px;background:#14141d;border:1px solid #2b2b3d;border-left:3px solid #fa1e4e;padding:6px 12px;font-size:13px}
+.user-badge a{color:#fff;font-weight:bold;text-decoration:none}
+.user-badge a:hover{color:#fa1e4e}
+.logout-btn{background:transparent;border:none;color:#9e9eb3;font-size:11px;text-transform:uppercase;cursor:pointer;font-weight:bold}
+.logout-btn:hover{color:#fa1e4e}
 main{max-width:1100px;margin:35px auto;padding:0 20px}
 .search-bar{background:#14141d;border:1px solid #2b2b3d;border-left:4px solid #fa1e4e;padding:10px 14px;margin-bottom:30px;display:flex;gap:10px}
 .search-bar input{width:100%;background:transparent;border:none;color:#fff;font-size:15px;outline:none}
@@ -31,7 +39,7 @@ h2{font-size:14px;letter-spacing:2px;margin-bottom:18px;color:#fff;text-transfor
 .steam-warning{background:rgba(250,30,78,.1);border-left:2px solid #fa1e4e;color:#ffb3c4;font-size:11px;padding:6px 8px;margin-bottom:12px}
 .price-action{display:flex;justify-content:space-between;align-items:center}
 .price-tag{color:#fa1e4e;font-weight:bold;font-size:15px}
-a.steam-btn{background:#fa1e4e;color:#fff;text-decoration:none;padding:9px 16px;font-weight:bold;text-transform:uppercase;font-size:12px}
+a.steam-btn,button.steam-btn{background:#fa1e4e;color:#fff;text-decoration:none;border:none;padding:9px 16px;font-weight:bold;text-transform:uppercase;font-size:12px;cursor:pointer}
 .no-results{display:none;background:#12121a;border:1px solid #fa1e4e;padding:25px;text-align:center;margin-top:20px}
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(5,5,10,.88);z-index:999;justify-content:center;align-items:center;padding:20px}
 .modal-box{background:#12121a;border:1px solid #fa1e4e;max-width:650px;width:100%;box-shadow:0 0 35px rgba(250,30,78,.5);position:relative;overflow:hidden;animation:pop .18s ease-out}
@@ -44,6 +52,8 @@ a.steam-btn{background:#fa1e4e;color:#fff;text-decoration:none;padding:9px 16px;
 .tags-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 .tag-pill{background:rgba(250,30,78,.16);border:1px solid rgba(250,30,78,.45);color:#ff85a1;font-size:11px;font-weight:bold;padding:4px 10px;text-transform:uppercase;letter-spacing:.5px}
 .modal-desc{color:#c4c4d4;font-size:14px;line-height:1.6;margin-bottom:20px}
+.login-input{width:100%;background:#09090d;border:1px solid #2b2b3d;color:#fff;padding:11px 14px;margin-bottom:14px;font-size:14px;outline:none}
+.login-input:focus{border-color:#fa1e4e}
 </style>
 </head>
 <body>
@@ -57,7 +67,15 @@ a.steam-btn{background:#fa1e4e;color:#fff;text-decoration:none;padding:9px 16px;
 <a href="pomoc.html">POMOC</a>
 </nav>
 </div>
+<div class="header-right">
+<button id="btnOpenLogin" class="login-btn" onclick="otworzLogin()">Zaloguj</button>
+<div id="userBadge" class="user-badge">
+<span style="color:#fa1e4e">●</span>
+<a id="userNickLink" href="https://steamcommunity.com" target="_blank"></a>
+<button class="logout-btn" onclick="wyloguj()">[Wyloguj]</button>
+</div>
 <a href="https://steampowered.com" target="_blank" class="install-btn">⬇ Pobierz Steam</a>
+</div>
 </header>
 <main>
 <div class="search-bar">
@@ -71,6 +89,7 @@ a.steam-btn{background:#fa1e4e;color:#fff;text-decoration:none;padding:9px 16px;
 <a id="linkSteamSzukaj" href="https://steampowered.com" target="_blank" class="steam-btn">Szukaj bezpośrednio na Steam</a>
 </div>
 </main>
+
 <div id="gameModal" class="modal" onclick="zamknijTlo(event)">
 <div class="modal-box">
 <button class="close-btn" onclick="zamknijModal()">✕</button>
@@ -87,16 +106,26 @@ a.steam-btn{background:#fa1e4e;color:#fff;text-decoration:none;padding:9px 16px;
 </div>
 </div>
 </div>
+
+<div id="loginModal" class="modal" onclick="zamknijTlo(event)">
+<div class="modal-box" style="max-width:430px">
+<button class="close-btn" onclick="zamknijLogin()">✕</button>
+<div class="modal-body">
+<h3 style="margin-bottom:8px">Połącz konto Steam</h3>
+<p style="color:#9e9eb3;font-size:13px;margin-bottom:18px;line-height:1.4">Podaj swój nick oraz opcjonalnie SteamID64 lub link do profilu Steam. Nigdy nie podawaj hasła.</p>
+<input type="text" id="inNick" class="login-input" placeholder="Twój nick (wymagane)">
+<input type="text" id="inSteam" class="login-input" placeholder="SteamID64 lub link https://steamcommunity.com...">
+<button class="steam-btn" style="width:100%;padding:12px" onclick="zaloguj()">Zaloguj przez STEM</button>
+</div>
+</div>
+</div>
+
 <script src="gry.js"></script>
 <script>
 function pokazGry(l){var h='';for(var k=0;k<l.length;k++){var x=l.at(k);var img=x.i?'<img src="'+x.i+'" alt="'+x.n+'" title="Kliknij, aby zobaczyć opis i tagi" onclick="otworzGre('+x.id+')">':'';h+='<div class="game-card">'+img+'<div class="card-body"><div><h4>'+x.n+'</h4><div class="genre-tag">'+x.g+'</div></div><div><div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div><div class="price-action"><span class="price-tag">'+x.c+'</span><a href="steam://store/'+x.id+'" class="steam-btn">Kup na Steam</a></div></div></div></div>';}document.getElementById('listaGier').innerHTML=h}
 function otworzGre(id){var g=gry.find(function(x){return x.id===id});if(!g)return;document.getElementById('mImg').src=g.i;document.getElementById('mTitle').innerText=g.n;document.getElementById('mDesc').innerText=g.d;document.getElementById('mPrice').innerText=g.c;document.getElementById('mLink').href='steam://store/'+g.id;var tagi=g.t.split(','),tHtml='';for(var i=0;i<tagi.length;i++){tHtml+='<span class="tag-pill">'+tagi.at(i)+'</span>';}document.getElementById('mTags').innerHTML=tHtml;document.getElementById('gameModal').style.display='flex'}
 function zamknijModal(){document.getElementById('gameModal').style.display='none'}
-function zamknijTlo(e){if(e.target.id==='gameModal')zamknijModal()}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')zamknijModal()});
-function szukajGry(){var t=document.getElementById('searchBox').value.toLowerCase().trim(),w=gry.filter(function(x){return x.n.toLowerCase().indexOf(t)>-1||x.g.toLowerCase().indexOf(t)>-1||x.t.toLowerCase().indexOf(t)>-1});pokazGry(w);var b=document.getElementById('brakWynikow');if(w.length===0&&t.length>0){b.style.display='block';document.getElementById('linkSteamSzukaj').href='https://steampowered.com?term='+encodeURIComponent(t)}else{b.style.display='none'}}
-function wyczysc(){document.getElementById('searchBox').value='';szukajGry()}
-pokazGry(gry);
-</script>
-</body>
-</html>
+function otworzLogin(){document.getElementById('loginModal').style.display='flex'}
+function zamknijLogin(){document.getElementById('loginModal').style.display='none'}
+function zamknijTlo(e){if(e.target.id==='gameModal')zamknijModal();if(e.target.id==='loginModal')zamknijLogin()}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){zamknijModal();zamknijLogin()}});
