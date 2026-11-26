@@ -1,114 +1,125 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEM - GX Edition</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", Arial, sans-serif; }
-        body { background: radial-gradient(circle at top center, #1b1024 0%, #09090d 75%); color: #e4e4eb; min-height: 100vh; }
-        header { background-color: #0d0d12; padding: 15px 4%; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #fa1e4e; box-shadow: 0 4px 20px rgba(250, 30, 78, 0.25); }
-        .nav-left { display: flex; align-items: center; gap: 45px; }
-        .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-        .logo img { height: 45px; width: auto; display: block; }
-        .logo-text { color: #fff; font-size: 26px; font-weight: 900; letter-spacing: 3px; }
-        nav a { color: #9e9eb3; text-decoration: none; margin-right: 22px; font-weight: 800; font-size: 14px; letter-spacing: 1px; }
-        nav a.active, nav a:hover { color: #fa1e4e; }
-        a.install-btn { background: #fa1e4e; color: #fff; text-decoration: none; padding: 9px 18px; font-size: 13px; font-weight: 800; text-transform: uppercase; }
-        main { max-width: 1100px; margin: 35px auto; padding: 0 20px; }
-        .search-bar { background: #14141d; border: 1px solid #2b2b3d; border-left: 4px solid #fa1e4e; padding: 10px 14px; margin-bottom: 30px; display: flex; gap: 10px; }
-        .search-bar input { width: 100%; background: transparent; border: none; color: #fff; font-size: 15px; outline: none; }
-        .clear-btn { background: transparent; color: #9e9eb3; border: 1px solid #2b2b3d; padding: 6px 14px; font-weight: bold; font-size: 11px; cursor: pointer; }
-        h2 { font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; color: #fff; text-transform: uppercase; border-left: 3px solid #fa1e4e; padding-left: 10px; }
-        .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
-        .game-card { background: #12121a; border: 1px solid #262636; display: flex; flex-direction: column; justify-content: space-between; transition: 0.2s; }
-        .game-card:hover { transform: translateY(-4px); border-color: #fa1e4e; box-shadow: 0 6px 20px rgba(250, 30, 78, 0.35); }
-        .game-card img { width: 100%; height: 150px; object-fit: cover; border-bottom: 1px solid #262636; }
-        .card-body { padding: 16px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
-        .card-body h4 { color: #fff; margin-bottom: 6px; font-size: 17px; }
-        .genre-tag { color: #6c6c85; font-size: 12px; margin-bottom: 14px; text-transform: uppercase; }
-        .steam-warning { background: rgba(250, 30, 78, 0.1); border-left: 2px solid #fa1e4e; color: #ffb3c4; font-size: 11px; padding: 6px 8px; margin-bottom: 12px; }
-        .price-action { display: flex; justify-content: space-between; align-items: center; }
-        .price-tag { color: #fa1e4e; font-weight: bold; font-size: 15px; }
-        a.steam-btn { background: #fa1e4e; color: #fff; text-decoration: none; padding: 9px 16px; font-weight: bold; text-transform: uppercase; font-size: 12px; }
-        .no-results { display: none; background: #12121a; border: 1px solid #fa1e4e; padding: 25px; text-align: center; margin-top: 20px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STEM - Informacje</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",Arial,sans-serif}
+body{background:radial-gradient(circle at top center,#1b1024 0%,#09090d 75%);color:#e4e4eb;min-height:100vh}
+header{background:#0d0d12;padding:15px 4%;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #fa1e4e;box-shadow:0 4px 20px rgba(250,30,78,.25);flex-wrap:wrap;gap:15px}
+.nav-left{display:flex;align-items:center;gap:45px}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo img{height:45px;width:auto;display:block}
+.logo-text{color:#fff;font-size:26px;font-weight:900;letter-spacing:3px}
+nav a{color:#9e9eb3;text-decoration:none;margin-right:22px;font-weight:800;font-size:14px;letter-spacing:1px}
+nav a.active,nav a:hover{color:#fa1e4e}
+.header-right{display:flex;align-items:center;gap:12px}
+a.install-btn{background:#fa1e4e;color:#fff;text-decoration:none;padding:9px 16px;font-size:12px;font-weight:800;text-transform:uppercase}
+.login-btn{background:transparent;color:#fff;border:1px solid #fa1e4e;padding:9px 16px;font-size:12px;font-weight:800;text-transform:uppercase;cursor:pointer}
+.login-btn:hover{background:rgba(250,30,78,.2)}
+.user-badge{display:none;align-items:center;gap:10px;background:#14141d;border:1px solid #2b2b3d;border-left:3px solid #fa1e4e;padding:6px 12px;font-size:13px}
+.user-badge a{color:#fff;font-weight:bold;text-decoration:none}
+.logout-btn{background:transparent;border:none;color:#9e9eb3;font-size:11px;text-transform:uppercase;cursor:pointer;font-weight:bold}
+main{max-width:950px;margin:40px auto;padding:0 20px}
+h2{font-size:15px;letter-spacing:2px;margin-bottom:20px;color:#fff;text-transform:uppercase;border-left:3px solid #fa1e4e;padding-left:10px}
+.info-box{background:#12121a;border:1px solid #262636;border-left:4px solid #fa1e4e;padding:24px;margin-bottom:25px}
+.info-box h3{color:#fff;font-size:20px;margin-bottom:12px}
+.info-box p{color:#c4c4d4;font-size:14px;line-height:1.65;margin-bottom:12px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:25px}
+.stat-card{background:#14141d;border:1px solid #2b2b3d;padding:20px;text-align:center}
+.stat-num{color:#fa1e4e;font-size:28px;font-weight:900;margin-bottom:6px}
+.stat-label{color:#9e9eb3;font-size:12px;text-transform:uppercase;letter-spacing:1px}
+button.steam-btn{background:#fa1e4e;color:#fff;border:none;padding:11px 18px;font-weight:bold;text-transform:uppercase;font-size:12px;cursor:pointer}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(5,5,10,.88);z-index:999;justify-content:center;align-items:center;padding:20px}
+.modal-box{background:#12121a;border:1px solid #fa1e4e;max-width:430px;width:100%;box-shadow:0 0 35px rgba(250,30,78,.5);position:relative;padding:24px}
+.close-btn{position:absolute;top:12px;right:12px;background:#0d0d12;color:#fff;border:1px solid #fa1e4e;width:34px;height:34px;font-size:18px;font-weight:bold;cursor:pointer}
+.login-input{width:100%;background:#09090d;border:1px solid #2b2b3d;color:#fff;padding:11px 14px;margin-bottom:14px;font-size:14px;outline:none}
+</style>
 </head>
 <body>
-    <header>
-        <div class="nav-left">
-            <a href="index.html" class="logo"><img src="STEM.png" alt="STEM"><span class="logo-text">STEM</span></a>
-            <nav>
-                <a href="index.html" class="active">SKLEP</a>
-                <a href="spolecznosc.html">SPOŁECZNOŚĆ</a>
-                <a href="informacje.html">INFORMACJE</a>
-                <a href="pomoc.html">POMOC</a>
-            </nav>
-        </div>
-        <a href="https://steampowered.com" target="_blank" class="install-btn">⬇ Pobierz Steam</a>
-    </header>
+<header>
+<div class="nav-left">
+<a href="index.html" class="logo"><img src="STEM.png" alt="STEM"><span class="logo-text">STEM</span></a>
+<nav>
+<a href="index.html">SKLEP</a>
+<a href="spolecznosc.html">SPOŁECZNOŚĆ</a>
+<a href="informacje.html" class="active">INFORMACJE</a>
+<a href="pomoc.html">POMOC</a>
+</nav>
+</div>
+<div class="header-right">
+<button id="btnOpenLogin" class="login-btn" onclick="otworzLogin()">Zaloguj</button>
+<div id="userBadge" class="user-badge">
+<span style="color:#fa1e4e">●</span>
+<a id="userNickLink" href="https://steamcommunity.com" target="_blank"></a>
+<button class="logout-btn" onclick="wyloguj()">[Wyloguj]</button>
+</div>
+<a href="https://steampowered.com" target="_blank" class="install-btn">⬇ Pobierz Steam</a>
+</div>
+</header>
 
-    <main>
-        <div class="search-bar">
-            <input type="text" id="searchBox" oninput="szukajGry()" placeholder="Szukaj wśród 40 gier (np. GTA, CS2, Helldivers, DayZ, Sims)...">
-            <button class="clear-btn" onclick="wyczysc()">Wyczyść</button>
-        </div>
+<main>
+<h2>O platformie STEM - GX Edition</h2>
+<div class="info-box">
+<h3>Szybki katalog gier z bezpośrednim przekierowaniem do Steam</h3>
+<p>STEM to lekki, gamingowy katalog stworzony z myślą o graczach korzystających z przeglądarki Opera GX. Pozwala błyskawicznie wyszukiwać najpopularniejsze gry po nazwie, gatunku lub tagach, sprawdzać ich opisy oraz otwierać karty produktów bezpośrednio w aplikacji desktopowej Steam.</p>
+<p>Wszystkie przyciski zakupu korzystają z protokołu <strong>steam://store/</strong>, dzięki czemu po jednym kliknięciu przenoszą Cię prosto do zainstalowanego klienta Steam na komputerze.</p>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-num">40+</div><div class="stat-label">Wyselekcjonowanych gier</div></div>
+<div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Bezpośrednie linki Steam</div></div>
+<div class="stat-card"><div class="stat-num">GX</div><div class="stat-label">Tryb ciemny i neonowy</div></div>
+</div>
+</div>
 
-        <h2>Katalog gier STEM (40 tytułów)</h2>
-        <div class="games-grid" id="listaGier"></div>
+<div class="info-box">
+<h3>Jak korzystać ze strony?</h3>
+<p>• <strong>Podgląd gry:</strong> Kliknij na okładkę dowolnej gry w zakładce Sklep, aby otworzyć powiększoną grafikę, pełny opis oraz tagi.</p>
+<p>• <strong>Logowanie gracza:</strong> Kliknij przycisk <em>Zaloguj</em> w prawym górnym rogu, aby podpiąć swój nick lub SteamID64 (bez podawania hasła).</p>
+<p>• <strong>Wymagania:</strong> Do otwierania linków „Kup na Steam” wymagana jest zainstalowana aplikacja Steam na komputerze.</p>
+</div>
+</main>
 
-        <div id="brakWynikow" class="no-results">
-            <p style="margin-bottom:15px;">Nie znaleziono tej gry na liście powyżej.</p>
-            <a id="linkSteamSzukaj" href="https://steampowered.com" target="_blank" class="steam-btn">Szukaj bezpośrednio na Steam</a>
-        </div>
-    </main>
+<div id="loginModal" class="modal" onclick="zamknijTlo(event)">
+<div class="modal-box">
+<button class="close-btn" onclick="zamknijLogin()">✕</button>
+<h3 style="color:#fff;margin-bottom:8px">Połącz konto Steam</h3>
+<p style="color:#9e9eb3;font-size:13px;margin-bottom:18px">Podaj swój nick oraz opcjonalnie SteamID64 lub link do profilu Steam.</p>
+<input type="text" id="inNick" class="login-input" placeholder="Twój nick (wymagane)">
+<input type="text" id="inSteam" class="login-input" placeholder="SteamID64 lub link https://steamcommunity.com...">
+<button class="steam-btn" style="width:100%" onclick="zaloguj()">Zaloguj przez STEM</button>
+</div>
+</div>
 
-    <script>
-        var gry = [
-            { id: 3240220, nazwa: "Grand Theft Auto V Enhanced", gatunek: "Akcja / Otwarty świat", cena: "129,00 zł", img: "GTA.jpg" },
-            { id: 730, nazwa: "Counter-Strike 2", gatunek: "FPS / Akcja", cena: "Free to Play", img: "CS.jpg" },
-            { id: 1091500, nazwa: "Cyberpunk 2077", gatunek: "RPG / Sci-Fi", cena: "199,00 zł", img: "CYBERPUNK.jpg" },
-            { id: 292030, nazwa: "Wiedźmin 3: Dziki Gon", gatunek: "RPG / Fantasy", cena: "99,99 zł", img: "wiedzmin.jpg" },
-            { id: 1174180, nazwa: "Red Dead Redemption 2", gatunek: "Akcja / Przygoda", cena: "249,90 zł", img: "READ.jpg" },
-            { id: 252490, nazwa: "Rust", gatunek: "Survival / Multiplayer", cena: "184,99 zł", img: "RUST.jpg" },
-            { id: 105600, nazwa: "Terraria", gatunek: "Sandbox / Przygoda", cena: "45,99 zł", img: "TERRARIA.jpg" },
-            { id: 1245620, nazwa: "ELDEN RING", gatunek: "RPG / Souls-like", cena: "249,00 zł", img: "ELDENRING.jpg" },
-            { id: 227300, nazwa: "Euro Truck Simulator 2", gatunek: "Symulator / Jazda", cena: "79,99 zł", img: "EUROTRUCKSIMULATOR.jpg" },
-            { id: 1086940, nazwa: "Baldur's Gate 3", gatunek: "RPG / Strategia", cena: "249,00 zł", img: "BALDURS.jpg" },
-            { id: 1551360, nazwa: "Forza Horizon 5", gatunek: "Wyścigi / Otwarty świat", cena: "249,90 zł", img: "FORZA.jpg" },
-            { id: 1623730, nazwa: "Palworld", gatunek: "Survival / Otwarty świat", cena: "138,99 zł", img: "PALWORLD.webp" },
-            { id: 570, nazwa: "Dota 2", gatunek: "MOBA / Strategia", cena: "Free to Play", img: "DOTA.jpg" },
-            { id: 1172470, nazwa: "Apex Legends™", gatunek: "Battle Royale / FPS", cena: "Free to Play", img: "APEX.jpg" },
-            { id: 578080, nazwa: "PUBG: BATTLEGROUNDS", gatunek: "Battle Royale / Strzelanka", cena: "Free to Play", img: "PUBG.jpg" },
-            { id: 892970, nazwa: "Valheim", gatunek: "Survival / Wikingowie", cena: "71,99 zł", img: "obraz_2026-11-25_152604208.png" },
-            { id: 413150, nazwa: "Stardew Valley", gatunek: "Symulator / RPG", cena: "53,99 zł", img: "STARDEW.jpg" },
-            { id: 2358720, nazwa: "Black Myth: Wukong", gatunek: "RPG Akcji", cena: "249,00 zł", img: "WUKONG.jpg" },
-            { id: 990080, nazwa: "Hogwarts Legacy", gatunek: "RPG / Otwarty świat", cena: "269,00 zł", img: "HOGWARTS.jpg" },
-            { id: 1593500, nazwa: "God of War", gatunek: "Akcja / Przygoda", cena: "219,00 zł", img: "GOD.jpg" },
-            { id: 1808500, nazwa: "ARC Raiders", gatunek: "Strzelanka / Sci-Fi", cena: "179,00 zł", img: "ARC.jpg" },
-            { id: 553850, nazwa: "HELLDIVERS™ 2", gatunek: "Akcja / Kooperacja", cena: "169,00 zł", img: "HELL.jpg" },
-            { id: 230410, nazwa: "Warframe", gatunek: "Akcja / RPG / Sci-Fi", cena: "Free to Play", img: "WARFRAME.jpg" },
-            { id: 2767030, nazwa: "Marvel Rivals", gatunek: "Hero Shooter / Akcja", cena: "Free to Play", img: "RIVALS.jpg" },
-            { id: 1085660, nazwa: "Destiny 2", gatunek: "FPS / MMO / Sci-Fi", cena: "Free to Play", img: "DESTINY.jpg" },
-            { id: 440, nazwa: "Team Fortress 2", gatunek: "FPS / Klasyka", cena: "Free to Play", img: "TF2.jpg" },
-            { id: 1222670, nazwa: "The Sims™ 4", gatunek: "Symulator życia", cena: "Free to Play", img: "SIMS.jpg" },
-            { id: 236390, nazwa: "War Thunder", gatunek: "Symulator / Pojazdy", cena: "Free to Play", img: "Warthunder.jpg" },
-            { id: 1407200, nazwa: "World of Tanks", gatunek: "Akcja / Czołgi", cena: "Free to Play", img: "TANKS.jpg" },
-            { id: 252950, nazwa: "Rocket League", gatunek: "Sportowe / Wyścigi", cena: "Free to Play", img: "ROCKET.jpg" },
-            { id: 381210, nazwa: "Dead by Daylight", gatunek: "Horror / Multiplayer", cena: "71,99 zł", img: "DAYLIGHT.jpg" },
-            { id: 739630, nazwa: "Phasmophobia", gatunek: "Horror / Kooperacja", cena: "79,99 zł", img: "PHASMOPHOBIA.jpg" },
-            { id: 1966720, nazwa: "Lethal Company", gatunek: "Horror / Kooperacja", cena: "45,99 zł", img: "LETHAL.jpg" },
-            { id: 2881650, nazwa: "Content Warning", gatunek: "Horror / Komedia", cena: "36,99 zł", img: "CONTENTWARNING.jpg" },
-            { id: 1326470, nazwa: "Sons Of The Forest", gatunek: "Survival / Horror", cena: "138,99 zł", img: "SONSFOREST.jpg" },
-            { id: 2399830, nazwa: "ARK: Survival Ascended", gatunek: "Survival / Dinozaury", cena: "208,99 zł", img: "ARK.jpg" },
-            { id: 221100, nazwa: "DayZ", gatunek: "Survival / Zombie", cena: "219,00 zł", img: "DAYZ.jpg" },
-            { id: 284160, nazwa: "BeamNG.drive", gatunek: "Symulator / Fizyka jazdy", cena: "114,99 zł", img: "BEAMNG.jpg" },
-            { id: 526870, nazwa: "Satisfactory", gatunek: "Budowanie / Automatyzacja", cena: "184,99 zł", img: "SATISFACTORY.jpg" },
-            { id: 427520, nazwa: "Factorio", gatunek: "Strategia / Automatyzacja", cena: "160,00 zł", img: "FACTORIO.jpg" }
-        ];
-
-        function pokazGry(lista) {
-            var kontener = document.getElementById('listaGier');
-            var html = '';
-            for (var i = 0; i < lista.length; i++) {
-                var g = lista.at(i);
+<script>
+function otworzLogin(){document.getElementById('loginModal').style.display='flex'}
+function zamknijLogin(){document.getElementById('loginModal').style.display='none'}
+function zamknijTlo(e){if(e.target.id==='loginModal')zamknijLogin()}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')zamknijLogin()});
+function zaloguj(){
+    var n=document.getElementById('inNick').value.trim(),s=document.getElementById('inSteam').value.trim();
+    if(!n)return alert('Wpisz swój nick!');
+    var url='https://steamcommunity.com;
+    if(s.indexOf('http')===0)url=s;
+    else if(/^\d{17}$/.test(s))url='https://steamcommunity.com;
+    else if(s.length>0)url='https://steamcommunity.com'+encodeURIComponent(s);
+    localStorage.setItem('stemUser',JSON.stringify({n:n,u:url}));
+    sprawdzSesje();zamknijLogin();
+}
+function wyloguj(){localStorage.removeItem('stemUser');sprawdzSesje()}
+function sprawdzSesje(){
+    var d=localStorage.getItem('stemUser');
+    if(d){
+        var u=JSON.parse(d);
+        document.getElementById('btnOpenLogin').style.display='none';
+        document.getElementById('userBadge').style.display='flex';
+        var l=document.getElementById('userNickLink');l.innerText=u.n;l.href=u.u;
+    }else{
+        document.getElementById('btnOpenLogin').style.display='inline-block';
+        document.getElementById('userBadge').style.display='none';
+    }
+}
+sprawdzSesje();
+</script>
+</body>
+</html>
