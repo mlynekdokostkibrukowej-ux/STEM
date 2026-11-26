@@ -38,8 +38,7 @@ var gry=[
 {id:221100,n:"DayZ",g:"Survival / Zombie",c:"219,00 zł",i:"DAYZ.jpg",t:"Zombie,Survival,Otwarty świat,Hardcore",d:"Surowa gra survivalowa w postapokaliptycznym świecie opanowanym przez zarażonych."},
 {id:284160,n:"BeamNG.drive",g:"Symulator / Fizyka jazdy",c:"114,99 zł",i:"BEAMNG.jpg",t:"Fizyka,Symulator jazdy,Samochody,Sandboks",d:"Realistyczny symulator jazdy z zaawansowaną fizyką miękkich ciał odwzorowującą pojazdy."},
 {id:526870,n:"Satisfactory",g:"Budowanie / Automatyzacja",c:"184,99 zł",i:"SATISFACTORY.jpg",t:"Automatyzacja,Budowanie fabryk,Otwarty świat,Kooperacja",d:"Pierwszoosobowa gra o budowaniu zautomatyzowanych fabryk i eksploracji obcej planety."},
-{id:427520,n:"Factorio",g:"Strategia / Automatyzacja",c:"160,00 zł",i:"FACTORIO.jpg",t:"Automatyzacja,Strategia,Budowanie baz,Multiplayer",d:"Projektuj złożone linie produkcyjne, badaj technologie i broń swojej fabryki przed tubylcami."}
-];,
+{id:427520,n:"Factorio",g:"Strategia / Automatyzacja",c:"160,00 zł",i:"FACTORIO.jpg",t:"Automatyzacja,Strategia,Budowanie baz,Multiplayer",d:"Projektuj złożone linie produkcyjne, badaj technologie i broń swojej fabryki przed tubylcami."},
 {id:271590,n:"Grand Theft Auto V Legacy",g:"Akcja / Otwarty świat",c:"129,00 zł",i:"",t:"Otwarty świat,Akcja,Multiplayer,Kryminalne",d:"Klasyczne wydanie bestsellerowej gry akcji w Los Santos z trybem fabularnym i sieciowym."},
 {id:1097150,n:"Fall Guys",g:"Party / Battle Royale",c:"Free to Play",i:"",t:"Party,Free to Play,Multiplayer,Komedia",d:"Kolorowy, chaotyczny turniej wieloosobowy, w którym dziesiątki graczy pokonują szalone tory przeszkód."},
 {id:945360,n:"Among Us",g:"Multiplayer / Dedukcja",c:"17,99 zł",i:"",t:"Multiplayer,Dedukcja,Kosmos,Kooperacja",d:"Gra towarzyska o współpracy i zdradzie na statku kosmicznym, gdzie załoga szuka ukrytych oszustów."},
