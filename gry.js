@@ -98,5 +98,5 @@ var gry=[
 {id:1446780,n:"MONSTER HUNTER RISE",g:"Akcja / RPG",c:"169,00 zł",i:"",t:"Polowanie,RPG Akcji,Kooperacja,Fantasy",d:"Dynamiczna odsłona serii Monster Hunter z szybkimi ruchami przy użyciu kabli i nowymi bestiami."},
 {id:814380,n:"Sekiro™: Shadows Die Twice",g:"Akcja / Souls-like",c:"254,00 zł",i:"",t:"Souls-like,Ninja,Trudna,Akcja",d:"Nagradzana gra akcji studia FromSoftware osadzona w feudalnej Japonii z precyzyjnym systemem walki mieczem."},
 {id:1238810,n:"Battlefield™ V",g:"FPS / II Wojna Światowa",c:"219,90 zł",i:"",t:"II Wojna Światowa,FPS,Multiplayer,Akcja",d:"Dynamiczna strzelanka osadzona na mniej znanych frontach II wojny światowej z destrukcją otoczenia."},
-{id:646570,n:"Slay the Spire",g:"Karciana / Roguelike",c:"114,99 zł",i:"",t:"Karciana,Roguelike,Strategia,Turowa",d:"Połączenie gry karcianej z roguelike, w którym budujesz unikalną talię kart podczas wspinaczki na szczyt Iglicy."}];
-
+{id:646570,n:"Slay the Spire",g:"Karciana / Roguelike",c:"114,99 zł",i:"",t:"Karciana,Roguelike,Strategia,Turowa",d:"Połączenie gry karcianej z roguelike, w którym budujesz unikalną talię kart podczas wspinaczki na szczyt Iglicy."}
+];
