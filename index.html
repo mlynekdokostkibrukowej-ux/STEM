@@ -73,7 +73,7 @@ a.steam-btn,button.steam-btn{background:#fa1e4e;color:#fff;text-decoration:none;
 </header>
 <main>
 <div class="search-bar">
-<input type="text" id="searchBox" oninput="szukajGry()" placeholder="Szukaj gry po nazwie lub tagach (np. GTA, CS2, Horror, Survival)...">
+<input type="text" id="searchBox" oninput="szukajGry()" placeholder="Szukaj gry po nazwie lub tagach...">
 <button class="clear-btn" onclick="wyczysc()">Wyczyść</button>
 </div>
 <h2>Katalog gier STEM (kliknij grafikę, aby zobaczyć opis i tagi)</h2>
@@ -111,64 +111,22 @@ a.steam-btn,button.steam-btn{background:#fa1e4e;color:#fff;text-decoration:none;
 </div>
 </div>
 </div>
+<script src="gry.js"></script>
 <script>
-var dane = "3240220|Grand Theft Auto V Enhanced|Akcja / Otwarty świat|129,00 zł|GTA.jpg|Otwarty świat,Akcja,Multiplayer,Kryminalne|Ulepszona wersja hitowej gry akcji w metropolii Los Santos z odświeżoną oprawą graficzną i GTA Online.;" +
-"730|Counter-Strike 2|FPS / Akcja|Free to Play|CS.jpg|FPS,Taktyczna,Multiplayer,Esport|Najpopularniejsza taktyczna strzelanka sieciowa 5 na 5 od Valve z dynamicznymi starciami rankingowymi.;" +
-"1091500|Cyberpunk 2077|RPG / Sci-Fi|199,00 zł|CYBERPUNK.jpg|Cyberpunk,Otwarty świat,RPG,Sci-Fi|Futurystyczna gra RPG akcji osadzona w pełnym niebezpieczeństw Night City jako najemnik V.;" +
-"292030|Wiedźmin 3: Dziki Gon|RPG / Fantasy|99,99 zł|wiedzmin.jpg|RPG,Otwarty świat,Fantasy,Fabularna|Wciel się w łowcę potworów Geralta z Rivii i wyrusz na poszukiwanie Ciri w mrocznym świecie fantasy.;" +
-"1174180|Red Dead Redemption 2|Akcja / Przygoda|249,90 zł|READ.jpg|Western,Otwarty świat,Fabularna,Akcja|Epicka opowieść o losach Arthura Morgana i gangu van der Lindego u schyłku ery Dzikiego Zachodu.;" +
-"252490|Rust|Survival / Multiplayer|184,99 zł|RUST.jpg|Survival,Multiplayer,PvP,Budowanie baz|Bezlitosna gra o przetrwaniu w otwartym świecie, gdzie zdobywasz surowce i bronisz swojej bazy.;" +
-"105600|Terraria|Sandbox / Przygoda|45,99 zł|TERRARIA.jpg|Sandbox,2D,Przygoda,Crafting|Dwuwymiarowa gra sandboksowa pełna eksploracji podziemi, budowania i walki z bossami.;" +
-"1245620|ELDEN RING|RPG / Souls-like|249,00 zł|ELDENRING.jpg|Souls-like,Dark Fantasy,Otwarty świat,RPG|Nagradzane RPG akcji oferujące ogromny i pełen wyzwań otwarty świat Ziem Pomiędzy.;" +
-"227300|Euro Truck Simulator 2|Symulator / Jazda|79,99 zł|EUROTRUCKSIMULATOR.jpg|Symulator,Jazda,Relaksująca,Multiplayer|Zasiądź za kierownicą potężnych ciężarówek i przemierzaj tysiące kilometrów europejskich tras.;" +
-"1086940|Baldur's Gate 3|RPG / Strategia|249,00 zł|BALDURS.jpg|RPG,Turowa,Fantasy,Kooperacja|Rozbudowane fabularne RPG w świecie Dungeons & Dragons z turowym systemem walki.;" +
-"1551360|Forza Horizon 5|Wyścigi / Otwarty świat|249,90 zł|FORZA.jpg|Wyścigi,Otwarty świat,Samochody,Multiplayer|Festiwal motoryzacyjny w tętniącym życiem Meksyku z setkami licencjonowanych samochodów.;" +
-"1623730|Palworld|Survival / Otwarty świat|138,99 zł|PALWORLD.webp|Survival,Zbieranie stworzeń,Otwarty świat,Crafting|Odkrywaj krainę zamieszkaną przez tajemnicze stwory zwane Palami, które pomogą Ci w walce.;" +
-"570|Dota 2|MOBA / Strategia|Free to Play|DOTA.jpg|MOBA,Free to Play,Strategia,Esport|Kultowa gra MOBA od Valve, w której dwie pięcioosobowe drużyny rywalizują o zniszczenie bazy wroga.;" +
-"1172470|Apex Legends™|Battle Royale / FPS|Free to Play|APEX.jpg|Battle Royale,FPS,Hero Shooter,Free to Play|Dynamiczna strzelanka Battle Royale w uniwersum Titanfall z unikalnymi zdolnościami postaci.;" +
-"578080|PUBG: BATTLEGROUNDS|Battle Royale / Strzelanka|Free to Play|PUBG.jpg|Battle Royale,Strzelanka,Survival,Multiplayer|Klasyczna strzelanka Battle Royale dla 100 graczy lądujących na wyspie, gdzie wygrywa ostatni oddział.;" +
-"892970|Valheim|Survival / Wikingowie|71,99 zł|obraz_2026-11-25_152604208.png|Survival,Wikingowie,Kooperacja,Budowanie|Gra o przetrwaniu inspirowana mitologią nordycką, w której podbijasz dzikie krainy w imię Odyna.;" +
-"413150|Stardew Valley|Symulator / RPG|53,99 zł|STARDEW.jpg|Symulator farmy,Pikselowa,Relaksująca,RPG|Odziedzicz gospodarstwo w Dolinie Stardew, uprawiaj rośliny, hoduj zwierzęta i rozwijaj farmę.;" +
-"2358720|Black Myth: Wukong|RPG Akcji|249,00 zł|WUKONG.jpg|RPG Akcji,Mitologia,Dla jednego gracza,Fantasy|Widowiskowa gra RPG akcji zakorzeniona w chińskiej mitologii z wymagającymi pojedynkami.;" +
-"990080|Hogwarts Legacy|RPG / Otwarty świat|269,00 zł|HOGWARTS.jpg|Magia,Otwarty świat,RPG,Fantasy|Otwarty świat RPG w XIX-wiecznym Hogwarcie, pozwalający uczyć się zaklęć i odkrywać sekrety.;" +
-"1593500|God of War|Akcja / Przygoda|219,00 zł|GOD.jpg|Akcja,Przygoda,Mitologia nordycka,Fabularna|Kratos wraz ze swoim synem Atreusem wyrusza w podróż przez surową krainę nordyckich bogów.;" +
-"1808500|ARC Raiders|Strzelanka / Sci-Fi|179,00 zł|ARC.jpg|Strzelanka,Sci-Fi,Kooperacja,Akcja|Taktyczna strzelanka ekstrakcyjna sci-fi, w której grupy łupieżców walczą z maszynami z orbity.;" +
-"553850|HELLDIVERS™ 2|Akcja / Kooperacja|169,00 zł|HELL.jpg|Kooperacja,Strzelanka,Sci-Fi,Multiplayer|Kooperacyjna strzelanka trzecioosobowa, w której jako żołnierz Super Ziemi walczysz z obcymi.;" +
-"230410|Warframe|Akcja / RPG / Sci-Fi|Free to Play|WARFRAME.jpg|Free to Play,Sci-Fi,Akcja,Kooperacja|Szybka gra akcji sci-fi z dziesiątkami futurystycznych pancerzy bojowych i broni do odblokowania.;" +
-"2767030|Marvel Rivals|Hero Shooter / Akcja|Free to Play|RIVALS.jpg|Hero Shooter,Superbohaterowie,Free to Play,6v6|Drużynowa strzelanka PvP 6 na 6 z kultowymi bohaterami i złoczyńcami z uniwersum Marvela.;" +
-"1085660|Destiny 2|FPS / MMO / Sci-Fi|Free to Play|DESTINY.jpg|FPS,MMO,Sci-Fi,Free to Play|Kosmiczna strzelanka MMO oferująca fabularne kampanie, najazdy kooperacyjne oraz tryb PvP.;" +
-"440|Team Fortress 2|FPS / Klasyka|Free to Play|TF2.jpg|FPS,Klasyka,Free to Play,Multiplayer|Legendarna drużynowa strzelanka sieciowa z dziewięcioma zróżnicowanymi klasami postaci.;" +
-"1222670|The Sims™ 4|Symulator życia|Free to Play|SIMS.jpg|Symulator życia,Budowanie,Free to Play,Sandboks|Twórz unikalnych Simów, projektuj ich wymarzone domy i kieruj ich codziennym życiem.;" +
-"236390|War Thunder|Symulator / Pojazdy|Free to Play|Warthunder.jpg|Czołgi,Samoloty,Free to Play,Symulator|Darmowa gra wojenna pozwalająca zasiąść za sterami tysięcy historycznych samolotów i czołgów.;" +
-"1407200|World of Tanks|Akcja / Czołgi|Free to Play|TANKS.jpg|Czołgi,Akcja,Free to Play,Multiplayer|Drużynowa gra akcji online poświęcona bitwom pancernym z setkami odwzorowanych pojazdów.;" +
-"252950|Rocket League|Sportowe / Wyścigi|Free to Play|ROCKET.jpg|Sportowe,Samochody,Free to Play,Esport|Dynamiczne połączenie piłki nożnej i szalonych wyścigów samochodowych z napędem rakietowym.;" +
-"381210|Dead by Daylight|Horror / Multiplayer|71,99 zł|DAYLIGHT.jpg|Horror,Survival Horror,Multiplayer,Przetrwanie|Asymetryczny horror sieciowy 4 na 1, w którym jeden gracz jest zabójcą, a czterej uciekają.;" +
-"739630|Phasmophobia|Horror / Kooperacja|79,99 zł|PHASMOPHOBIA.jpg|Horror,Kooperacja,Duchy,Śledztwo|Kooperacyjny horror psychologiczny, w którym badacie nawiedzone lokacje sprzętem łowców duchów.;" +
-"1966720|Lethal Company|Horror / Kooperacja|45,99 zł|LETHAL.jpg|Horror,Kooperacja,Komedia,Sci-Fi|Kooperacyjny horror o zbieraniu złomu na opuszczonych księżycach, aby wyrobić limit zysków.;" +
-"2881650|Content Warning|Horror / Komedia|36,99 zł|CONTENTWARNING.jpg|Horror,Komedia,Kooperacja,Multiplayer|Zejdź ze znajomymi do Starego Świata, nagraj straszne zjawiska kamerą i zdobądź sławę.;" +
-"1326470|Sons Of The Forest|Survival / Horror|138,99 zł|SONSFOREST.jpg|Survival,Horror,Otwarty świat,Budowanie|Wysłany na odległą wyspę musisz przetrwać wśród kanibali i zbudować własną bazę.;" +
-"2399830|ARK: Survival Ascended|Survival / Dinozaury|208,99 zł|ARK.jpg|Dinozaury,Survival,Otwarty świat,Budowanie|Odświeżona na silniku Unreal Engine 5 gra o przetrwaniu, oswajaniu dinozaurów i budowaniu.;" +
-"221100|DayZ|Survival / Zombie|219,00 zł|DAYZ.jpg|Zombie,Survival,Otwarty świat,Hardcore|Surowa gra survivalowa w postapokaliptycznym świecie opanowanym przez zarażonych.;" +
-"284160|BeamNG.drive|Symulator / Fizyka jazdy|114,99 zł|BEAMNG.jpg|Fizyka,Symulator jazdy,Samochody,Sandboks|Realistyczny symulator jazdy z zaawansowaną fizyką miękkich ciał odwzorowującą pojazdy.;" +
-"526870|Satisfactory|Budowanie / Automatyzacja|184,99 zł|SATISFACTORY.jpg|Automatyzacja,Budowanie fabryk,Otwarty świat,Kooperacja|Pierwszoosobowa gra o budowaniu ogromnych zautomatyzowanych fabryk i eksploracji obcej planety.;" +
-"427520|Factorio|Strategia / Automatyzacja|160,00 zł|FACTORIO.jpg|Automatyzacja,Strategia,Budowanie baz,Multiplayer|Projektuj złożone linie produkcyjne, badaj technologie i broń swojej fabryki przed tubylcami.";
-
-var gry = dane.split(';').map(function(w){ var p = w.split('|'); return {id:p.at(0), n:p.at(1), g:p.at(2), c:p.at(3), i:p.at(4), t:p.at(5), d:p.at(6)}; });
-
-function pokazGry(l){var h='';for(var k=0;k<l.length;k++){var x=l.at(k);var img=x.i?'<img src="'+x.i+'" alt="'+x.n+'" title="Kliknij, aby zobaczyć opis i tagi" onclick="otworzGre(\''+x.id+'\')">':'';h+='<div class="game-card">'+img+'<div class="card-body"><div><h4>'+x.n+'</h4><div class="genre-tag">'+x.g+'</div></div><div><div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div><div class="price-action"><span class="price-tag">'+x.c+'</span><a href="steam://store/'+x.id+'" class="steam-btn">Kup na Steam</a></div></div></div></div>';}document.getElementById('listaGier').innerHTML=h}
+function pokazGry(l){var h='';for(var k=0;k<l.length;k++){var x=l.at(k);var img=x.i?'<img src="'+x.i+'" alt="'+x.n+'" onclick="otworzGre('+x.id+')">':'';h+='<div class="game-card">'+img+'<div class="card-body"><div><h4>'+x.n+'</h4><div class="genre-tag">'+x.g+'</div></div><div><div class="steam-warning">⚠ Kliknięcie otworzy aplikację Steam. Jeśli jej nie posiadasz, link nie zadziała.</div><div class="price-action"><span class="price-tag">'+x.c+'</span><a href="steam://store/'+x.id+'" class="steam-btn">Kup na Steam</a></div></div></div></div>';}document.getElementById('listaGier').innerHTML=h}
 function otworzGre(id){var g=gry.find(function(x){return x.id===id});if(!g)return;document.getElementById('mImg').src=g.i;document.getElementById('mTitle').innerText=g.n;document.getElementById('mDesc').innerText=g.d;document.getElementById('mPrice').innerText=g.c;document.getElementById('mLink').href='steam://store/'+g.id;var tagi=g.t.split(','),tHtml='';for(var i=0;i<tagi.length;i++){tHtml+='<span class="tag-pill">'+tagi.at(i)+'</span>';}document.getElementById('mTags').innerHTML=tHtml;document.getElementById('gameModal').style.display='flex'}
 function zamknijModal(){document.getElementById('gameModal').style.display='none'}
 function otworzLogin(){document.getElementById('loginModal').style.display='flex'}
 function zamknijLogin(){document.getElementById('loginModal').style.display='none'}
 function zamknijTlo(e){if(e.target.id==='gameModal')zamknijModal();if(e.target.id==='loginModal')zamknijLogin()}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){zamknijModal();zamknijLogin()}});
-function szukajGry(){var t=document.getElementById('searchBox').value.toLowerCase().trim(),w=gry.filter(function(x){return x.n.toLowerCase().indexOf(t)>-1||x.g.toLowerCase().indexOf(t)>-1||x.t.toLowerCase().indexOf(t)>-1});pokazGry(w);var b=document.getElementById('brakWynikow');if(w.length===0&&t.length>0){b.style.display='block';document.getElementById('linkSteamSzukaj').href='https://steampowered.com}else{b.style.display='none'}}
+function szukajGry(){var t=document.getElementById('searchBox').value.toLowerCase().trim(),w=gry.filter(function(x){return x.n.toLowerCase().indexOf(t)>-1||x.g.toLowerCase().indexOf(t)>-1||x.t.toLowerCase().indexOf(t)>-1});pokazGry(w);var b=document.getElementById('brakWynikow');if(w.length===0&&t.length>0){b.style.display='block';document.getElementById('linkSteamSzukaj').href='https://steampowered.com?term='+encodeURIComponent(t)}else{b.style.display='none'}}
 function wyczysc(){document.getElementById('searchBox').value='';szukajGry()}
-function zaloguj(){var n=document.getElementById('inNick').value.trim(),s=document.getElementById('inSteam').value.trim();if(!n)return alert('Wpisz swój nick!');var url='https://steamcommunity.com(s.indexOf('http')===0)url=s;else if(/^\d{17}$/.test(s))url='https://steamcommunity.com if(s.length>0)url='https://steamcommunity.com('stemUser',JSON.stringify({n:n,u:url}));sprawdzSesje();zamknijLogin()}
+function zaloguj(){var n=document.getElementById('inNick').value.trim(),s=document.getElementById('inSteam').value.trim();if(!n)return alert('Wpisz swój nick!');var url='https://steamcommunity.com(s.indexOf('http')===0)url=s;else if(/^\d{17}$/.test(s))url='https://steamcommunity.com if(s.length>0)url='https://steamcommunity.com'+encodeURIComponent(s);localStorage.setItem('stemUser',JSON.stringify({n:n,u:url}));sprawdzSesje();zamknijLogin()}
 function wyloguj(){localStorage.removeItem('stemUser');sprawdzSesje()}
 function sprawdzSesje(){var d=localStorage.getItem('stemUser');if(d){var u=JSON.parse(d);document.getElementById('btnOpenLogin').style.display='none';document.getElementById('userBadge').style.display='flex';var l=document.getElementById('userNickLink');l.innerText=u.n;l.href=u.u}else{document.getElementById('btnOpenLogin').style.display='inline-block';document.getElementById('userBadge').style.display='none'}}
 sprawdzSesje();
-pokazGry(gry);
+if(typeof gry!=='undefined')pokazGry(gry);
 </script>
 </body>
 </html>
